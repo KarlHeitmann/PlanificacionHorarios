@@ -4,7 +4,7 @@ FLAGS=-g -DDEBUG
 
 NCURSES=-lncurses
 
-OUT=PlanificacionHorarios
+OUT=main
 
 #CPP=g++
 #Comandos para la compilacion:
@@ -22,4 +22,4 @@ $(OUT): main.o
 main.o: main.cpp
 
 clean: 
-	rm -f *.o PlanificacionHorarios
+	rm -f *.o $(OUT)
