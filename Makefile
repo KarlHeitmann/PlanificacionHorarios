@@ -26,3 +26,4 @@ interfaz/CMainWindow.o: interfaz/CMainWindow.cpp
 
 clean: 
 	rm -f *.o $(OUT)
+	rm -f interfaz/*.o 
