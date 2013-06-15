@@ -17,7 +17,7 @@ int main (int argc, char **argv) {
 		cout << i << " Horario: " << LCostHoraProf[i].GetHorario() << "\tCoste: " << LCostHoraProf[i].GetCoste() << "\n";
 	}	
 	for (unsigned i=1; i< (argc-0); i++)
-		cout << i <<" Horario: " << pchrtemp[i] << "\n";
+		cout << i <<" Horario: " << strTemp[i] << "\n";
 
 	return 0;
 
