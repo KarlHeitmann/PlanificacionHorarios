@@ -8,13 +8,13 @@
 #include <string>
 class TCostHoraProf {
 	private:
-		const char *pchrHorario;
+		std::string strHorario;
 		int intCoste;
 	public:
 		TCostHoraProf(const char*, int);
-		TCostHoraProf(const std::string, int);
+		TCostHoraProf(std::string, int);
 		int GetCoste(void);
-		const char *GetHorario(void);
+		std::string GetHorario(void);
 };
 
 #endif
