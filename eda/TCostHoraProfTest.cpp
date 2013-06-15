@@ -5,12 +5,14 @@
 using namespace std;
 
 int main (int argc, char **argv) {
-	int i;
 	std::vector<TCostHoraProf> LCostHoraProf;
 	//TCostHoraProf CostHoraProf[argc];
-	for (i=0; i< argc; i++) {
+	for (int i=0; i< argc; i++) {
 		LCostHoraProf.push_back( TCostHoraProf(argv[i], i) );
 	}
-	
+	for (unsigned i=1; i< argc; i++) {
+		//cout << "Hola";
+		cout << i << " Horario: " << LCostHoraProf[i].GetHorario() << "\tCoste: " << LCostHoraProf[i].GetCoste() << "\n";
+	}	
 }
 
