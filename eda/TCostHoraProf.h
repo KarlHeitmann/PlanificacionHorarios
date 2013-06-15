@@ -12,6 +12,8 @@ class TCostHoraProf {
 		int intCoste;
 	public:
 		TCostHoraProf(const char*, int);
+		int GetCoste(void);
+		const char *GetHorario(void);
 };
 
 #endif
