@@ -1,6 +1,9 @@
 #Siguiente archivo es el ejecutable, puede cambiar
 main
 eda/TCostHoraProf
+eda/TCostAsigProf
+#Fin
+
 
 *\~
 *.swp

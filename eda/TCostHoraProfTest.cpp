@@ -17,5 +17,8 @@ int main (int argc, char **argv) {
 	}	
 	for (unsigned i=1; i< (argc-0); i++)
 		cout << i <<" Horario: " << pchrtemp[i] << "\n";
+
+	return 0;
+
 }
 
