@@ -5,11 +5,17 @@ FLAGS=-g -DDEBUG
 OUT_TP=TProfesor
 OUT_TCHP=TCostHoraProf
 OUT_TCAP=TCostAsigProf
+OUT_TA=TAula
 
 .SUFFIXES: .cpp .c .h .o
 .c.o: ; cc $(FLAGS) -c $*.c
 .cc.o: ; gcc $(FLAGS) -c $*.cc
 .cpp.o: ; g++ $(FLAGS) -c $*.cpp
+
+$(OUT_TA): TAula.o TAulaTest.o
+	g++ TAula.o TAulaTest.o -o $(OUT_TA)
+TAula.o: TAula.cpp TAula.h
+TAulaTest.o: TAulaTest.cpp TAula.h
 
 TProfesor: TProfesor.o TProfesorTest.o TCostAsigProf.o TCostHoraProf.o
 	g++ TProfesor.o TProfesorTest.o TCostAsigProf.o TCostHoraProf.o -o $(OUT_TP)
