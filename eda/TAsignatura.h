@@ -10,7 +10,7 @@ class TAsignatura {
 		int intCodigo;
 		int intPosProf;
 	public:
-		TAsignaruta(std::string, int, int);
+		TAsignatura(std::string, int, int);
 		std::string GetNombre();
 		int GetCodigo();
 		int GetPosProf();

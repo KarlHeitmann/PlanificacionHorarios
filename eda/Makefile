@@ -14,7 +14,7 @@ OUT_TASIG=TAsignatura
 .cpp.o: ; g++ $(FLAGS) -c $*.cpp
 
 $(OUT_TASIG): TAsignatura.o TAsignaturaTest.o
-	g++ TAsignatura.o TAsignaturaTest.o
+	g++ TAsignatura.o TAsignaturaTest.o -o $(OUT_TASIG)
 TAsignatura.o: TAsignatura.cpp TAsignatura.h
 TAsignaturaTest.o: TAsignaturaTest.cpp TAsignatura.h
 

@@ -7,13 +7,13 @@ TAsignatura::TAsignatura(std::string _strNombre, int _intCodigo, int _intPosProf
 	intCodigo =_intCodigo ;
 	strNombre =_strNombre ;
 }
-std::string GetNombre() {
+std::string TAsignatura::GetNombre() {
 	return strNombre;
 }
-int GetCodigo() {
+int TAsignatura::GetCodigo() {
 	return intCodigo;
 }
-int GetPosProf() {
+int TAsignatura::GetPosProf() {
 	return intPosProf;
 }
 
