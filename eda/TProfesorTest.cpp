@@ -1,12 +1,12 @@
 #include <string>
 #include <vector>
 #include <iostream>
-//#include "TProfesor.h"
+#include "TProfesor.h"
 
 int main (int argc, char **argv) {
 
 	TProfesor Profesor("Heitmann", 1); 
-	//TCostHoraProf *pCostHoraProf;
+	TCostHoraProf *pCostHoraProf;
 	
 	std::string strTemp="";
 

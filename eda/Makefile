@@ -32,4 +32,4 @@ TCostHoraProf: TCostHoraProf.o TCostHoraProfTest.o
 TCostHoraProf.o: TCostHoraProf.cpp TCostHoraProf.h
 TCostHoraProfTest.o: TCostHoraProfTest.cpp TCostHoraProf.h
 clean:
-	rm -f *.o $(OUT_TCHP) $(OUT_TCAP) $(OUT_TP)
+	rm -f *.o $(OUT_TCHP) $(OUT_TCAP) $(OUT_TP) $(OUT_TA)
