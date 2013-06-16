@@ -2,6 +2,7 @@
 
 FLAGS=-g -DDEBUG
 
+OUT_TP=TProfesor
 OUT_TCHP=TCostHoraProf
 OUT_TCAP=TCostAsigProf
 
@@ -9,6 +10,11 @@ OUT_TCAP=TCostAsigProf
 .c.o: ; cc $(FLAGS) -c $*.c
 .cc.o: ; gcc $(FLAGS) -c $*.cc
 .cpp.o: ; g++ $(FLAGS) -c $*.cpp
+
+TProfesor: TProfesor.o TProfesorTest.o TCostAsigProf.o TCostHoraProf.o
+	g++ TProfesor.o TProfesorTest.o TCostAsigProf.o TCostHoraProf.o -o $(OUT_TP)
+TProfesor.o: TProfesor.cpp TProfesor.h
+TProfesorTest.o: TProfesorTest.cpp TProfesor.h
 
 TCostAsigProf: TCostAsigProf.o TCostHoraProf.o TCostAsigProfTest.o
 	g++ TCostAsigProf.o TCostHoraProf.o TCostAsigProfTest.o -o $(OUT_TCAP)
@@ -20,4 +26,4 @@ TCostHoraProf: TCostHoraProf.o TCostHoraProfTest.o
 TCostHoraProf.o: TCostHoraProf.cpp TCostHoraProf.h
 TCostHoraProfTest.o: TCostHoraProfTest.cpp TCostHoraProf.h
 clean:
-	rm -f *.o $(OUT_TCHP)
+	rm -f *.o $(OUT_TCHP) $(OUT_TCAP) $(OUT_TP)
