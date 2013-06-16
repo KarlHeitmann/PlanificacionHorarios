@@ -1,7 +1,15 @@
 #Siguiente archivo es el ejecutable, puede cambiar
 main
+eda/TCostHoraProf
+eda/TCostAsigProf
+eda/TProfesor
+eda/TAula
+eda/TAsignatura
+#Fin
+
 
 *\~
 *.swp
 *.o
 Documentacion
+sandbox
