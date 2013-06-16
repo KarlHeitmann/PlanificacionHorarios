@@ -10,8 +10,8 @@ OUT_TCAP=TCostAsigProf
 .cc.o: ; gcc $(FLAGS) -c $*.cc
 .cpp.o: ; g++ $(FLAGS) -c $*.cpp
 
-TCostAsigProf: TCostAsigProf.o TCostAsigProfTest.o
-	g++ TCostAsigProf.o TCostAsigProfTest.o -o $(OUT_TCAP)
+TCostAsigProf: TCostAsigProf.o TCostHoraProf.o TCostAsigProfTest.o
+	g++ TCostAsigProf.o TCostHoraProf.o TCostAsigProfTest.o -o $(OUT_TCAP)
 TCostAsigProf.o: TCostAsigProf.cpp TCostAsigProf.h
 TCostAsigProfTest.o: TCostAsigProfTest.cpp TCostAsigProf.h
 

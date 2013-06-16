@@ -6,12 +6,14 @@
 #include "TCostHoraProf.h"
 class TCostAsigProf {
 	private:
+		//TODO Cambiar a const int
 		int intCodAsig;
 		std::vector<TCostHoraProf> LCostHoraProf;
 	public:
 		TCostAsigProf(int);
-		//void PutTCostHoraProf(TCostHoraProf);
+		void PutTCostHoraProf(TCostHoraProf);
 		int GetCodAsig();
+		std::string Show();
 };
 
 #endif

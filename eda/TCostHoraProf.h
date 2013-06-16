@@ -5,15 +5,16 @@
  * */
 #ifndef T_COST_HORA_PROF_H
 #define T_COST_HORA_PROF_H
-
+#include <string>
 class TCostHoraProf {
 	private:
-		const char *pchrHorario;
+		std::string strHorario;
 		int intCoste;
 	public:
 		TCostHoraProf(const char*, int);
+		TCostHoraProf(std::string, int);
 		int GetCoste(void);
-		const char *GetHorario(void);
+		std::string GetHorario(void);
 };
 
 #endif
