@@ -6,11 +6,17 @@ OUT_TP=TProfesor
 OUT_TCHP=TCostHoraProf
 OUT_TCAP=TCostAsigProf
 OUT_TA=TAula
+OUT_TASIG=TAsignatura
 
 .SUFFIXES: .cpp .c .h .o
 .c.o: ; cc $(FLAGS) -c $*.c
 .cc.o: ; gcc $(FLAGS) -c $*.cc
 .cpp.o: ; g++ $(FLAGS) -c $*.cpp
+
+$(OUT_TASIG): TAsignatura.o TAsignaturaTest.o
+	g++ TAsignatura.o TAsignaturaTest.o -o $(OUT_TASIG)
+TAsignatura.o: TAsignatura.cpp TAsignatura.h
+TAsignaturaTest.o: TAsignaturaTest.cpp TAsignatura.h
 
 $(OUT_TA): TAula.o TAulaTest.o
 	g++ TAula.o TAulaTest.o -o $(OUT_TA)
@@ -32,4 +38,4 @@ TCostHoraProf: TCostHoraProf.o TCostHoraProfTest.o
 TCostHoraProf.o: TCostHoraProf.cpp TCostHoraProf.h
 TCostHoraProfTest.o: TCostHoraProfTest.cpp TCostHoraProf.h
 clean:
-	rm -f *.o $(OUT_TCHP) $(OUT_TCAP) $(OUT_TP) $(OUT_TA)
+	rm -f *.o $(OUT_TCHP) $(OUT_TCAP) $(OUT_TP) $(OUT_TA) $(OUT_TASIG)
