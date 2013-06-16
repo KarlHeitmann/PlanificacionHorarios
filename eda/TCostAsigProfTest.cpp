@@ -16,7 +16,7 @@ int main (int argc, char *argv[]) {
 		strTemp+="    |";
 		pCostHoraProf=new TCostHoraProf(strTemp,i);
 
-		CostAsigProf.PutTCostHoraProf(*pCostHoraProf);
+		CostAsigProf.PutCostHoraProf(*pCostHoraProf);
 
 		//pCostHoraProf=new TCostHoraProf(argv[i],i);
 		//LCostAsigProf[(unsigned) i].PutTCostHoraProf(*pCostHoraProf);

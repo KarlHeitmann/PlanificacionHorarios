@@ -11,7 +11,9 @@ class TCostAsigProf {
 		std::vector<TCostHoraProf> LCostHoraProf;
 	public:
 		TCostAsigProf(int);
-		void PutTCostHoraProf(TCostHoraProf);
+		void PutCostHoraProf(TCostHoraProf);
+		void GenAddCostHoraProf(std::string, int);
+		void GenAddCostHoraProf(const char*, int);
 		int GetCodAsig();
 		std::string Show();
 };
