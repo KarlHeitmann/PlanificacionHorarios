@@ -13,6 +13,7 @@ class TCostAsigProf {
 		TCostAsigProf(int);
 		void PutTCostHoraProf(TCostHoraProf);
 		int GetCodAsig();
+		std::string Show();
 };
 
 #endif
