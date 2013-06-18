@@ -2,10 +2,10 @@
 #include "TGen.h"
 
 
-TGen::TGen(int _intCodAsig, int _intCoste, std::string strHorario) {
+TGen::TGen(int _intCodAsig, int _intCoste, std::string _strHorario) {
 	intCodAsig=_intCodAsig;
 	intCoste=_intCoste;
-	strHorario=strHorario;
+	strHorario=_strHorario;
 }
 int TGen::GetCoste() {
 	return intCoste;
