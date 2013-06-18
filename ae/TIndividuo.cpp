@@ -2,6 +2,7 @@
 //#include "TGen.h"
 #include "TIndividuo.h"
 #include <iostream>
+//#include <string>
 TIndividuo::TIndividuo() {
 #if 1
 	floatAdaptacion=0.0;
