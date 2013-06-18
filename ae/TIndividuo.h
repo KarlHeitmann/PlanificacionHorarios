@@ -11,7 +11,7 @@ class TIndividuo {
 		float floatPuntuacion;
 		float floatPuntAcu;
 	public:
-		std::vector<TGen> vGenes();
+		std::vector<TGen> vGenes;
 		TIndividuo();
 		TIndividuo(float, float, float);
 		void Display(void);
