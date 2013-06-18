@@ -15,6 +15,7 @@ class TIndividuo {
 		TIndividuo();
 		TIndividuo(float, float, float);
 		void Display(void);
+		virtual void GenerarGenotipo(void);
 };
 
 #endif

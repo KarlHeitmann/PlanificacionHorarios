@@ -9,8 +9,16 @@ int main (int argc, char **argv) {
 	Individuo.Display();
 	TIndividuo Indiv2;
 	Indiv2.Display();
+	TIndividuo *CH;
+	std::cout << "\nTest CandidatoHorario:\n";
+	CH=new CandidatoHorario;
+	//CH->Display();
+	CH->GenerarGenotipo();
+#if 0
 	CandidatoHorario CH;
 	CH.Display();
+	CH.GenerarGenotipo();
+#endif
 	return 0;
 }
 
