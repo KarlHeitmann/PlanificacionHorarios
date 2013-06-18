@@ -1,6 +1,6 @@
 #include <iostream>
 #include "TIndividuo.h"
-
+#include "CandidatoHorario.h"
 
 int main (int argc, char **argv) {
 	
@@ -9,6 +9,8 @@ int main (int argc, char **argv) {
 	Individuo.Display();
 	TIndividuo Indiv2;
 	Indiv2.Display();
+	CandidatoHorario CH;
+	CH.Display();
 	return 0;
 }
 
