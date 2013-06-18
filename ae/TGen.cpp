@@ -7,7 +7,7 @@ TGen::TGen(int _intCodAsig, int _intCoste, std::string strHorario) {
 	intCoste=_intCoste;
 	strHorario=strHorario;
 }
-int TGen::GetCoste(); {
+int TGen::GetCoste() {
 	return intCoste;
 }
 int TGen::GetCodAsig() {

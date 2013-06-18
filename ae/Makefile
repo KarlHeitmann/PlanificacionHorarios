@@ -15,11 +15,12 @@ OUT_TI=TIndividuo
 #TIndividuo.o: TIndividuo.cpp TIndividuo.h TGen.h
 #TGen.o: TGen.cpp TGen.h
 
-$(OUT_TI): CandidatoHorario.o TIndividuo.o TIndividuoTest.o
-	g++ CandidatoHorario.o TIndividuo.o TIndividuoTest.o -o $(OUT_TI)
+$(OUT_TI): CandidatoHorario.o TIndividuo.o TIndividuoTest.o TGen.o
+	g++ CandidatoHorario.o TIndividuo.o TIndividuoTest.o TGen.o -o $(OUT_TI)
 CandidatoHorario.o: CandidatoHorario.cpp CandidatoHorario.h
 TIndividuoTest.o: TIndividuoTest.cpp TIndividuo.h
 TIndividuo.o: TIndividuo.cpp TIndividuo.h
+TGen.o: TGen.cpp
 
 clean:
 	rm -f *.o $(OUT_TI)
