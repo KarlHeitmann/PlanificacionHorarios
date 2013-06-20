@@ -1,6 +1,14 @@
 #Makefile hecho para las pruebas de los archivos dentro de esta carpeta
+ifeq ($(mode), release)
+	CFLAGS=-Wall
+else
+	mode=debug
+	CFLAGS=-g -Wall
+endif
 
-FLAGS=-g -DDEBUG
+CC=g++
+
+#FLAGS=-g -DDEBUG
 
 OUT_TP=TProfesor
 OUT_TCHP=TCostHoraProf
@@ -9,10 +17,14 @@ OUT_TA=TAula
 OUT_TASIG=TAsignatura
 
 .SUFFIXES: .cpp .c .h .o
-.c.o: ; cc $(FLAGS) -c $*.c
-.cc.o: ; gcc $(FLAGS) -c $*.cc
-.cpp.o: ; g++ $(FLAGS) -c $*.cpp
+.c.o: ; cc $(CFLAGS) -c $*.c
+.cc.o: ; gcc $(CFLAGS) -c $*.cc
+.cpp.o: ; g++ $(CFLAGS) -c $*.cpp
 
+#Static library build
+libAEeda.a: TAula.o TCostAsigProf.o TCostHoraProf.o TProfesor.o TAsignatura.o
+	ar rc libAEeda.a TAula.o TCostAsigProf.o TCostHoraProf.o TProfesor.o TAsignatura.o
+	ranlib libAEeda.a
 $(OUT_TASIG): TAsignatura.o TAsignaturaTest.o
 	g++ TAsignatura.o TAsignaturaTest.o -o $(OUT_TASIG)
 TAsignatura.o: TAsignatura.cpp TAsignatura.h
@@ -38,4 +50,4 @@ TCostHoraProf: TCostHoraProf.o TCostHoraProfTest.o
 TCostHoraProf.o: TCostHoraProf.cpp TCostHoraProf.h
 TCostHoraProfTest.o: TCostHoraProfTest.cpp TCostHoraProf.h
 clean:
-	rm -f *.o $(OUT_TCHP) $(OUT_TCAP) $(OUT_TP) $(OUT_TA) $(OUT_TASIG)
+	rm -f *.o $(OUT_TCHP) $(OUT_TCAP) $(OUT_TP) $(OUT_TA) $(OUT_TASIG) libAEeda.a

@@ -6,9 +6,10 @@ ae/eda/TProfesor
 ae/eda/TAula
 ae/eda/TAsignatura
 ae/TIndividuo
+ae/TIndividuoTest2
 #Fin
 
-
+*.a
 *\~
 *.swp
 *.o

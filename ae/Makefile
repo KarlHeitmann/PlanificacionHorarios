@@ -1,8 +1,10 @@
 #Makefile hecho para las pruebas de los archivos dentro de esta carpeta
-
 FLAGS=-g -DDEBUG
 
 OUT_TI=TIndividuo
+
+OUT_TP=TProfesor
+OUT_TA=TAula
 
 .SUFFIXES: .cpp .c .h .o
 .c.o: ; cc $(FLAGS) -c $*.c
@@ -15,10 +17,18 @@ OUT_TI=TIndividuo
 #TIndividuo.o: TIndividuo.cpp TIndividuo.h TGen.h
 #TGen.o: TGen.cpp TGen.h
 
+#$(OUT_TA): TAula.o TAulaTest.o
+#	g++ TAula.o TAulaTest.o -o $(OUT_TA)
+#TAula.o: TAula.cpp TAula.h
+#TAulaTest.o: TAulaTest.cpp TAula.h
+
 $(OUT_TI): CandidatoHorario.o TIndividuo.o TIndividuoTest.o TGen.o
 	g++ CandidatoHorario.o TIndividuo.o TIndividuoTest.o TGen.o -o $(OUT_TI)
+TIndividuoTest2: CandidatoHorario.o TIndividuo.o TIndividuoTest2.o TGen.o eda/libAEeda.a 
+	g++ $^ -o $@
 CandidatoHorario.o: CandidatoHorario.cpp CandidatoHorario.h
 TIndividuoTest.o: TIndividuoTest.cpp TIndividuo.h
+TIndividuoTest2.o: TIndividuoTest2.cpp TIndividuo.h
 TIndividuo.o: TIndividuo.cpp TIndividuo.h
 TGen.o: TGen.cpp
 
