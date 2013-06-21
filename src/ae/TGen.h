@@ -13,7 +13,7 @@ class TGen {
 		int GetCoste();
 		int GetCodAsig();
 		std::string GetHorario();
-}
+};
 
 
 

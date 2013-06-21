@@ -3,15 +3,15 @@
 
 #include <vector>
 #include <string>
-//#include "TGen.h"
+#include "TGen.h"
 
 class TIndividuo {
 	private:
-		//std::vector<TGen> vGenes();
 		float floatAdaptacion;
 		float floatPuntuacion;
 		float floatPuntAcu;
 	public:
+		std::vector<TGen> vGenes;
 		TIndividuo();
 		TIndividuo(float, float, float);
 		void Display(void);
