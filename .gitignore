@@ -9,6 +9,9 @@ ae/TIndividuo
 ae/TIndividuoTest2
 #Fin
 
+#Carpetas
+build/
+
 *.a
 *\~
 *.swp
