@@ -38,7 +38,7 @@ int main (int argc, char **argv) {
 	strTemp=Profesor.GetSummary();
 	
 	std::cout << strTemp ;
-
+	std::cout << "Pequenia linea extra\n";
 	return 0;
 
 }
