@@ -1,13 +1,18 @@
 #Siguiente archivo es el ejecutable, puede cambiar
 main
-eda/TCostHoraProf
-eda/TCostAsigProf
-eda/TProfesor
-eda/TAula
-eda/TAsignatura
+ae/eda/TCostHoraProf
+ae/eda/TCostAsigProf
+ae/eda/TProfesor
+ae/eda/TAula
+ae/eda/TAsignatura
+ae/TIndividuo
+ae/TIndividuoTest2
 #Fin
 
+#Carpetas
+build/
 
+*.a
 *\~
 *.swp
 *.o
