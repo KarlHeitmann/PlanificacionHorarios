@@ -7,6 +7,7 @@
 //                                 //
 #define TINDIVIDUO_SIMPLE 0
 #define TINDIVIDUO_HEREDADO_EN_CANDIDATO 1
+#define HERENCIA_CANDIDATO_VECTOR_ARREGLO 0
 
 int main (int argc, char **argv) {
 #if TINDIVIDUO_SIMPLE > 0
@@ -22,6 +23,11 @@ int main (int argc, char **argv) {
 	CH=new CandidatoHorario;
 	//CH->Display();
 	CH->GenerarGenotipo();
+#endif
+
+#if HERENCIA_CANDIDATO_VECTOR_ARREGLO > 0
+	TIndividuo *pCH;
+	
 #endif
 	return 0;
 }
