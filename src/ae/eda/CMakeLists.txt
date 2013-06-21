@@ -9,7 +9,8 @@ add_executable(TProfesorTest TProfesorTest.cpp TProfesor.cpp
 # add interfaz library
 #include_directories ("${PROJECT_SOURCE_DIR}/interfaz")
 #add_subdirectory (interfaz)
-
+add_library(AEDataStructure STATIC TProfesor.cpp TCostHoraProf.cpp
+	TCostAsigProf.cpp TAula.cpp TAsignatura.cpp)
 #set (EXTRA_LIBS ${EXTRA_LIBS} interfaz)
 
 
