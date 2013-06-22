@@ -18,6 +18,7 @@ class GeneradorDatos {
 		GeneradorDatos();
 		std::vector<TAula> *VectorTAula(void);
 		std::vector<TProfesor> *VectorTProfesor(void);
+		std::vector<TAsignatura> * VectorTAsignatura(void);
 };
 
 

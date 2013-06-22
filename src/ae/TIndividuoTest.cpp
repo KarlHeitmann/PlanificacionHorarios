@@ -44,7 +44,8 @@ int main (int argc, char **argv) {
 	pvAulas=DataGen.VectorTAula();
 	std::vector<TProfesor> *pvProfesores;
 	pvProfesores=DataGen.VectorTProfesor();
-	
+	std::vector<TAsignatura> * pvAsignaturas;
+	pvAsignaturas=DataGen.VectorTAsignatura();	
 #if 1
 	std::cout << "---Recorriendo vector Aulas---\n";
 	for (unsigned i=0; i<pvAulas->size(); i++) {
@@ -54,6 +55,12 @@ int main (int argc, char **argv) {
 	for (unsigned i=0; i<pvProfesores->size(); i++) {
 		std::cout << (*pvProfesores)[i].GetSummary();
 	}
+	std::cout << "---Recorriendo vector Asignaturas---\n";
+	for (unsigned i=0; i<pvAsignaturas->size(); i++) {
+		std::cout << (*pvAsignaturas)[i].GetNombre() << "\n";
+		 
+	}
+
 #endif
 	
 	//DataGen.VectorTAula();

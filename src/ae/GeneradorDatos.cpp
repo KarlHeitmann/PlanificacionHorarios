@@ -51,6 +51,19 @@ std::vector<TProfesor> *GeneradorDatos::VectorTProfesor() {
 	//std::cout << strTemp ;
 	return pvProfesores;	
 }
+std::vector<TAsignatura> *GeneradorDatos::VectorTAsignatura() {
+	std::vector<TAsignatura> *pvAsignaturas;
+	pvAsignaturas = new std::vector<TAsignatura>();
+
+	TAsignatura *pAsignatura;
+	pAsignatura = new TAsignatura("ELO329", 50, 0);
+	pvAsignaturas->push_back(*pAsignatura);
+	delete pAsignatura;
+	pAsignatura = new TAsignatura("ILI239", 40, 1);
+	pvAsignaturas->push_back(*pAsignatura);
+	delete pAsignatura;
+	return pvAsignaturas;
+}
 std::vector<TAula> *GeneradorDatos::VectorTAula() {
 	std::vector<TAula> *pvAulas;
 	pvAulas = new std::vector<TAula>();
