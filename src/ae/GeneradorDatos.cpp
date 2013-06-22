@@ -40,11 +40,12 @@ std::vector<TProfesor> *GeneradorDatos::VectorTProfesor() {
 	TCostAsigProf *pCostAsigProf;
 	pCostAsigProf=GenpCostAsigProf("MI", 69, 5);
 	pProfesor->PutCostAsigProf(*pCostAsigProf);
-	
+	delete pCostAsigProf;	
 	pCostAsigProf=GenpCostAsigProf("JU", 79, 4);
 	pProfesor->PutCostAsigProf(*pCostAsigProf);
-
+	delete pCostAsigProf;
 	pvProfesores->push_back(*pProfesor);
+	delete pProfesor;
 	//strTemp=Profesor.GetSummary();
 	
 	//std::cout << strTemp ;
@@ -67,7 +68,7 @@ std::vector<TAula> *GeneradorDatos::VectorTAula() {
 	pAula->PutStrHorario("S3");
 
 	pvAulas->push_back(*pAula);
-	
+	delete pAula;	
 	pAula=new TAula("B225");
 	pAula->PutStrHorario("M1");
 	pAula->PutStrHorario("M2");
@@ -80,6 +81,7 @@ std::vector<TAula> *GeneradorDatos::VectorTAula() {
 	pAula->PutStrHorario("V3");
 
 	pvAulas->push_back(*pAula);
+	delete pAula;
 	/*
 	for (unsigned i=0; i< pvAulas->size(); i++){
 		std::cout << (*pvAulas)[i].GetSummary();
