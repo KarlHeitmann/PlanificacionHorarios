@@ -5,6 +5,7 @@
 #include "GeneradorDatos.h"
 #include "eda/TAula.h"
 #include "eda/TProfesor.h"
+
 /////////////////////////////////////
 //                                 //
 // MACROS DEFINEN PRUEBAS A CORRER //
@@ -13,6 +14,9 @@
 #define TINDIVIDUO_HEREDADO_EN_CANDIDATO 0
 #define HERENCIA_CANDIDATO_VECTOR_ARREGLO 0
 #define GENERADOR_INDIVIDUOS 1
+
+
+
 int main (int argc, char **argv) {
 #if TINDIVIDUO_SIMPLE > 0
 	TIndividuo Individuo(5.5, 2.5, 3.0);
@@ -32,9 +36,9 @@ int main (int argc, char **argv) {
 #if HERENCIA_CANDIDATO_VECTOR_ARREGLO > 0
 	TIndividuo *pCH;
 	std::cout << "Test CandidatoHorario:\n";
-	CH=new CandidatoHorario;
-	//CH->Display();
-	CH->GenerarGenotipo();
+	pCH=new CandidatoHorario;
+	//pCH->Display();
+	pCH->GenerarGenotipo();
 	
 #endif
 #if GENERADOR_INDIVIDUOS > 0
@@ -46,7 +50,7 @@ int main (int argc, char **argv) {
 	pvProfesores=DataGen.VectorTProfesor();
 	std::vector<TAsignatura> * pvAsignaturas;
 	pvAsignaturas=DataGen.VectorTAsignatura();	
-#if 1
+#if 0
 	std::cout << "---Recorriendo vector Aulas---\n";
 	for (unsigned i=0; i<pvAulas->size(); i++) {
 		std::cout << (*pvAulas)[i].GetSummary();
@@ -58,13 +62,13 @@ int main (int argc, char **argv) {
 	std::cout << "---Recorriendo vector Asignaturas---\n";
 	for (unsigned i=0; i<pvAsignaturas->size(); i++) {
 		std::cout << (*pvAsignaturas)[i].GetNombre() << "\n";
-		 
+
 	}
-
 #endif
-	
 	//DataGen.VectorTAula();
-
+	TIndividuo *pCandidatoHorario;
+	pCandidatoHorario=new CandidatoHorario;
+	pCandidatoHorario->GenerarGenotipo(pvAulas, pvProfesores, pvAsignaturas);
 #endif
 	return 0;
 }
