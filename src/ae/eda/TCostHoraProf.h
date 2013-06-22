@@ -1,6 +1,5 @@
 /* 
- * Es el objeto que relaciona la preferencia del profesor por los diferentes
- * horarios
+ * Es el objeto que relaciona la preferencia del profesor por un horario
  *
  * */
 #ifndef T_COST_HORA_PROF_H

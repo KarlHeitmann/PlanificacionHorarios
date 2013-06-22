@@ -14,7 +14,7 @@ void TProfesor::PutCostAsigProf (TCostAsigProf CostAsigProf) {
 	LCostAsigProf.push_back(CostAsigProf);
 }
 std::string TProfesor::GetSummary() {
-	std::string strTemp="";
+	std::string strTemp="Profesor: " + strNombre + "\n";
 	for (unsigned i=0; i<LCostAsigProf.size(); i++) {
 		strTemp+=LCostAsigProf[i].Show()+"\n";
 	}

@@ -2,7 +2,7 @@
 #include <vector>
 #include <string>
 #include <sstream>
-
+#include <iostream>
 TCostAsigProf :: TCostAsigProf (int _intCodAsig) {
 	intCodAsig = _intCodAsig;
 }
@@ -23,12 +23,14 @@ int TCostAsigProf :: GetCodAsig() {
 std::string TCostAsigProf::Show() {
 	std::string strDisplay="";
 	std::stringstream ss;
+	//ss<<intCodAsig;
+	//strDisplay=ss;
 	for (int i=0; i< LCostHoraProf.size(); i++) {
-		strDisplay+=LCostHoraProf[i].GetHorario() + "\n";
+		strDisplay+=LCostHoraProf[i].GetHorario() ;
+		strDisplay+="-";
 	}
 	
-	ss<<intCodAsig;
-
+	//std::cout<< "Codigo asignatura: "
 	return strDisplay;	
 }
 
