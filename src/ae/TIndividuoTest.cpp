@@ -50,7 +50,7 @@ int main (int argc, char **argv) {
 	pvProfesores=DataGen.VectorTProfesor();
 	std::vector<TAsignatura> * pvAsignaturas;
 	pvAsignaturas=DataGen.VectorTAsignatura();	
-#if 0
+#if 1
 	std::cout << "---Recorriendo vector Aulas---\n";
 	for (unsigned i=0; i<pvAulas->size(); i++) {
 		std::cout << (*pvAulas)[i].GetSummary();
@@ -65,10 +65,12 @@ int main (int argc, char **argv) {
 
 	}
 #endif
+#if 0
 	//DataGen.VectorTAula();
 	TIndividuo *pCandidatoHorario;
 	pCandidatoHorario=new CandidatoHorario;
 	pCandidatoHorario->GenerarGenotipo(pvAulas, pvProfesores, pvAsignaturas);
+#endif
 #endif
 	return 0;
 }

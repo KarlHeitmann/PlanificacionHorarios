@@ -14,7 +14,9 @@ void CandidatoHorario::Display() {
 void CandidatoHorario::GenerarGenotipo(std::vector<TAula> *pvAulas, 
 		std::vector<TProfesor> *pvProfesores, std::vector<TAsignatura> *pvAsignaturas) {
 
-#if 0
+
+
+#if 1
 	int largo=3;
 	TGen *pGen;
 	for (unsigned i=0; i<largo;i++) {
