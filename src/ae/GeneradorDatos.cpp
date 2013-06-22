@@ -31,13 +31,14 @@ std::vector<TProfesor> *GeneradorDatos::VectorTProfesor() {
 	pvProfesores=new std::vector<TProfesor>();
 
 	TProfesor *pProfesor;
-	pProfesor = new TProfesor("Heitmann", 1); 
+	pProfesor = new TProfesor("Heitmann", 0); 
 
 	TCostHoraProf *pCostHoraProf;
 	
 	std::string strTemp="";
 
 	TCostAsigProf *pCostAsigProf;
+	//                             NAME, COD, CANTIDAD_HORARIOS_DISP
 	pCostAsigProf=GenpCostAsigProf("MI", 69, 5);
 	pProfesor->PutCostAsigProf(*pCostAsigProf);
 	delete pCostAsigProf;	
@@ -46,6 +47,15 @@ std::vector<TProfesor> *GeneradorDatos::VectorTProfesor() {
 	delete pCostAsigProf;
 	pvProfesores->push_back(*pProfesor);
 	delete pProfesor;
+	
+	pProfesor = new TProfesor("DERP", 1);
+	pCostAsigProf=GenpCostAsigProf("MA", 59, 3);
+	pProfesor->PutCostAsigProf(*pCostAsigProf);
+	delete pCostAsigProf;
+	pCostAsigProf=GenpCostAsigProf("LU", 49, 2);
+	pProfesor->PutCostAsigProf(*pCostAsigProf);
+	delete pCostAsigProf;
+	pvProfesores->push_back(*pProfesor);
 	//strTemp=Profesor.GetSummary();
 	
 	//std::cout << strTemp ;
@@ -56,10 +66,17 @@ std::vector<TAsignatura> *GeneradorDatos::VectorTAsignatura() {
 	pvAsignaturas = new std::vector<TAsignatura>();
 
 	TAsignatura *pAsignatura;
-	pAsignatura = new TAsignatura("ELO329", 50, 0);
+	//                            NAME,     cod_asig, pos_prof
+	pAsignatura = new TAsignatura("ELO329", 69, 0);
 	pvAsignaturas->push_back(*pAsignatura);
 	delete pAsignatura;
-	pAsignatura = new TAsignatura("ILI239", 40, 1);
+	pAsignatura = new TAsignatura("ILI239", 79, 0);
+	pvAsignaturas->push_back(*pAsignatura);
+	delete pAsignatura;
+	pAsignatura = new TAsignatura("FIS120", 59, 1);
+	pvAsignaturas->push_back(*pAsignatura);
+	delete pAsignatura;
+	pAsignatura = new TAsignatura("MAT021", 49, 1);
 	pvAsignaturas->push_back(*pAsignatura);
 	delete pAsignatura;
 	return pvAsignaturas;
