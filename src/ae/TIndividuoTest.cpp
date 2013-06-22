@@ -39,6 +39,25 @@ int main (int argc, char **argv) {
 #endif
 #if GENERADOR_INDIVIDUOS > 0
 	GeneradorDatos DataGen;
+	//std::cout << "Prueba de metodos\n";
+	std::vector<TAula> *pvAulas;
+	pvAulas=DataGen.VectorTAula();
+	std::vector<TProfesor> *pvProfesores;
+	pvProfesores=DataGen.VectorTProfesor();
+	
+#if 1
+	std::cout << "---Recorriendo vector Aulas---\n";
+	for (unsigned i=0; i<pvAulas->size(); i++) {
+		std::cout << (*pvAulas)[i].GetSummary();
+	}
+	std::cout << "---Recorriendo vector Profesores---\n";
+	for (unsigned i=0; i<pvProfesores->size(); i++) {
+		std::cout << (*pvProfesores)[i].GetSummary();
+	}
+#endif
+	
+	//DataGen.VectorTAula();
+
 #endif
 	return 0;
 }

@@ -9,11 +9,15 @@
 #include "eda/TCostHoraProf.h"
 class GeneradorDatos {
 	private:
-		std::vector<TProfesor> vProfesores;
-		std::vector<TAula> vAulas;
+		//std::vector<TProfesor> vProfesores;
+		//std::vector<TAula> vAulas;
+		TCostAsigProf *GenpCostAsigProf(std::string, int, int);
 		std::vector<TAsignatura> vAsignaturas;
+
 	public:
 		GeneradorDatos();
+		std::vector<TAula> *VectorTAula(void);
+		std::vector<TProfesor> *VectorTProfesor(void);
 };
 
 
