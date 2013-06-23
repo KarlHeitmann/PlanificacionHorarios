@@ -48,35 +48,21 @@ void CandidatoHorario::GenerarGenotipo(std::vector<TAula> *pvAulas,
 		std::cout << "Cantidad de horarios disponibles: " << uintEleccion << "\n";
 #endif
 	}
-#if IND_VERBOSE > 0
-	std::cout << "Contenido del cromosoma\n";
+	//Calculo de adaptacion basico
 	for (unsigned i=0; i<Cromosoma.size(); i++) {
+		floatAdaptacion+=(float) Cromosoma[i].GetCoste();
+#if IND_VERBOSE
+		std::cout << "Contenido del cromosoma\n";
 		std::cout << "Cromosoma: " << i <<"\n";
 		std::cout << "Codigo asignatura: " << Cromosoma[i].GetCodAsig() <<"\n";
 		std::cout << "Coste: " << Cromosoma[i].GetCoste() <<"\n";
 		std::cout << "Horario: " << Cromosoma[i].GetHorario() <<"\n";
-	}
 #endif
-#if 0
-	int largo=3;
-	TGen *pGen;
-	for (unsigned i=0; i<largo;i++) {
-		//pGen=new TGen(1, i, "L"+i);
-		//pGen=new TGen(1, i, std::string("L"));
-		pGen=new TGen(1, i, "L");
-		vGenes.push_back(*pGen);
-	}	
+	}
+#if IND_VERBOSE
+	std::cout << "Adaptacion del Individuo: " << floatAdaptacion << "\n";
+#endif
 	
-	for (unsigned i=0; i<largo; i++) {
-		std::cout << "Gen: "<< i << "\n";
-		std::cout << "Coste: " << vGenes[i].GetCoste()<<"\n";
-		std::cout << "Codigo Asignatura: " << vGenes[i].GetCodAsig()<<"\n";
-		std::cout << "Horario: " << vGenes[i].GetHorario()<<"\n";
-
-	}
-
-	//std::cout << "Esta es el metodo virtual GenerarGenotipo";
-#endif
 }
 
 

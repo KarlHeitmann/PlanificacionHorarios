@@ -9,16 +9,21 @@
 #include "eda/TProfesor.h"
 
 class TIndividuo {
+#if 0
 	private:
 		float floatAdaptacion;
 		float floatPuntuacion;
 		float floatPuntAcu;
+#endif
 	public:
 		//std::vector<TGen> vGenes;
 		TIndividuo();
 		TIndividuo(float, float, float);
 		void Display(void);
 		virtual void GenerarGenotipo(std::vector<TAula> *p1, std::vector<TProfesor> *p2, std::vector<TAsignatura> *p3);
+		float floatAdaptacion;
+		float floatPuntuacion;
+		float floatPuntAcu;
 };
 
 #endif
