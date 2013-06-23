@@ -48,8 +48,8 @@ void CandidatoHorario::GenerarGenotipo(std::vector<TAula> *pvAulas,
 		std::cout << "Cantidad de horarios disponibles: " << uintEleccion << "\n";
 #endif
 	}
-	std::cout << "Contenido del cromosoma\n";
 #if IND_VERBOSE > 0
+	std::cout << "Contenido del cromosoma\n";
 	for (unsigned i=0; i<Cromosoma.size(); i++) {
 		std::cout << "Cromosoma: " << i <<"\n";
 		std::cout << "Codigo asignatura: " << Cromosoma[i].GetCodAsig() <<"\n";
