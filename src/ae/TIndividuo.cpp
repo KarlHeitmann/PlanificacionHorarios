@@ -13,7 +13,8 @@ TIndividuo::TIndividuo(float _floatAdaptacion, float _floatPuntuacion, float _fl
 	floatPuntuacion=_floatPuntuacion;
 	floatPuntAcu=_floatPuntAcu;
 }
-void TIndividuo::GenerarGenotipo() {
+void TIndividuo::GenerarGenotipo(std::vector<TAula> *pvAulas, 
+		std::vector<TProfesor> *pvProfesores, std::vector<TAsignatura> *pvAsignaturas) {
 	;
 }
 void        TIndividuo::Display() {
