@@ -40,4 +40,6 @@ std::string TProfesor::GetNombre() {
 unsigned TProfesor::EscogeHorarioDisplonibleDeAsignatura(unsigned pos) {
 	return LCostAsigProf[pos].ChooseHorario();
 }
-
+TCostHoraProf *TProfesor::EscogeCostHoraProf(unsigned pos) {
+	return LCostAsigProf[pos].ChooseCostHoraProf();
+}

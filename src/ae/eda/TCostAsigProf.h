@@ -23,6 +23,7 @@ class TCostAsigProf {
 		
 		int GetHorarioDisponibleSize();
 		unsigned ChooseHorario();
+		TCostHoraProf *ChooseCostHoraProf();
 };
 
 #endif

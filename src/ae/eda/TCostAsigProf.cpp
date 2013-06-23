@@ -46,7 +46,12 @@ unsigned TCostAsigProf::ChooseHorario() {
 	return (unsigned) intEleccion;
 }
 
-
+TCostHoraProf * TCostAsigProf::ChooseCostHoraProf() {
+	int intLargo=GetHorarioDisponibleSize();
+	int  intEleccion=(unsigned) rand() % intLargo;
+	return &LCostHoraProf[(unsigned) intEleccion];
+	//return (unsigned) intEleccion;
+}
 
 
 

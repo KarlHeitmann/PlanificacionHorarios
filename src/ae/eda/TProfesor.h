@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include "TCostAsigProf.h"
+#include "TCostHoraProf.h"
 
 class TProfesor {
 	private:
@@ -25,7 +26,7 @@ class TProfesor {
 
 		//int GetHorarioDisponibleDeAsignaturaSize(unsigned);
 		unsigned EscogeHorarioDisplonibleDeAsignatura(unsigned);
-
+		TCostHoraProf *EscogeCostHoraProf(unsigned);
 };
 
 #endif
