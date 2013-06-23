@@ -6,6 +6,11 @@
 
 class CandidatoHorario: public TIndividuo {
 		//int ChooseHorario(std::vector<TCostHoraProf> *pvCostHoraProf);
+#if 0
+		virtual float floatAdaptacion;
+		virtual float floatPuntuacion;
+		virtual float floatPuntAcu;
+#endif
 		int ChooseHorario(int intSize);
 		std::vector<TGen> Cromosoma;
 	public:
