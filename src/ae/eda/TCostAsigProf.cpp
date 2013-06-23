@@ -1,9 +1,13 @@
 #include "TCostAsigProf.h"
+#include <time.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include <vector>
 #include <string>
 #include <sstream>
 #include <iostream>
 TCostAsigProf :: TCostAsigProf (int _intCodAsig) {
+	srand(time(NULL));
 	intCodAsig = _intCodAsig;
 }
 void TCostAsigProf :: PutCostHoraProf(TCostHoraProf CostHoraProf) {
@@ -36,4 +40,15 @@ std::string TCostAsigProf::Show() {
 int TCostAsigProf::GetHorarioDisponibleSize() {
 	return LCostHoraProf.size();
 }
+unsigned TCostAsigProf::ChooseHorario() {
+	int intLargo=GetHorarioDisponibleSize();
+	int intEleccion=rand() % intLargo;
+	return (unsigned) intEleccion;
+}
+
+
+
+
+
+
 

@@ -37,7 +37,7 @@ std::string TProfesor::GetNombre() {
 	return strNombre;
 }
 
-int TProfesor::GetHorarioDisponibleDeAsignaturaSize(unsigned pos) {
-	return LCostAsigProf[pos].GetHorarioDisponibleSize();
+unsigned TProfesor::EscogeHorarioDisplonibleDeAsignatura(unsigned pos) {
+	return LCostAsigProf[pos].ChooseHorario();
 }
 

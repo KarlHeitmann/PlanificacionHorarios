@@ -3,6 +3,9 @@
 #define T_COST_ASIG_PROF_H
 
 #include <vector>
+#include <time.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include "TCostHoraProf.h"
 class TCostAsigProf {
 	private:
@@ -19,7 +22,7 @@ class TCostAsigProf {
 		std::string Show();
 		
 		int GetHorarioDisponibleSize();
-
+		unsigned ChooseHorario();
 };
 
 #endif

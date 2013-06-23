@@ -7,6 +7,7 @@
 class CandidatoHorario: public TIndividuo {
 		//int ChooseHorario(std::vector<TCostHoraProf> *pvCostHoraProf);
 		int ChooseHorario(int intSize);
+		std::vector<TGen> Cromosoma;
 	public:
 		CandidatoHorario();
 		void Display(void);

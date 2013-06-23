@@ -22,25 +22,34 @@ void CandidatoHorario::GenerarGenotipo(std::vector<TAula> *pvAulas,
 	unsigned uintPosAsig;
 	int intCodAsig;
 	int intTamanioTemp;
+	unsigned uintEleccion;
 	std::vector<TCostHoraProf> *pvCostHoraProf;
-	
-	//std::default_random_engine generator;
-    //std::uniform_int_distribution<int> distribution(0,9);
-    
-
+	TGen *pGen;
 	for (unsigned i=0; i<pvAsignaturas->size(); i++) {
 		uintPosProf = (unsigned) (*pvAsignaturas)[i].GetPosProf();
 		intCodAsig = (*pvAsignaturas)[i].GetCodigo();
+		//O(n)
 		uintPosAsig = (*pvProfesores)[uintPosProf].FindAsigPos(intCodAsig);
 		
-		intTamanioTemp = (*pvProfesores)[uintPosProf].GetHorarioDisponibleDeAsignaturaSize(uintPosAsig);
+		uintEleccion = (*pvProfesores)[uintPosProf].EscogeHorarioDisplonibleDeAsignatura(uintPosAsig);
+		//              CodAsig, Coste, NombreHorario
+		pGen = new TGen(intCodAsig,(int) uintEleccion, "asd");
+		Cromosoma.push_back(*pGen);
+		delete pGen;
 		std::cout << "________________________________________________________\n";
 		std::cout << "Horarios disponibles del profesor " << (*pvProfesores)[uintPosProf].GetNombre()<<"\n";
 		std::cout << "Asignatura: " << intCodAsig << "\n";
 		std::cout << "Posicion de la asignatura dentro del profesor: " << uintPosAsig << "\n";
-		std::cout << "Cantidad de horarios disponibles: " << intTamanioTemp << "\n";
+		std::cout << "Cantidad de horarios disponibles: " << uintEleccion << "\n";
 	}
+	std::cout << "Contenido del cromosoma\n";
 
+	for (unsigned i=0; i<Cromosoma.size(); i++) {
+		std::cout << "Cromosoma: " << i <<"\n";
+		std::cout << "Codigo asignatura: " << Cromosoma[i].GetCodAsig() <<"\n";
+		std::cout << "Coste: " << Cromosoma[i].GetCoste() <<"\n";
+		std::cout << "Horario: " << Cromosoma[i].GetHorario() <<"\n";
+	}
 #if 0
 	int largo=3;
 	TGen *pGen;

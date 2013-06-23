@@ -23,7 +23,8 @@ class TProfesor {
 		int GetCodProf();
 		std::string GetNombre();
 
-		int GetHorarioDisponibleDeAsignaturaSize(unsigned);
+		//int GetHorarioDisponibleDeAsignaturaSize(unsigned);
+		unsigned EscogeHorarioDisplonibleDeAsignatura(unsigned);
 
 };
 
