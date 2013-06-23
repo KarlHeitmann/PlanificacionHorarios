@@ -33,5 +33,7 @@ std::string TCostAsigProf::Show() {
 	//std::cout<< "Codigo asignatura: "
 	return strDisplay;	
 }
-
+int TCostAsigProf::GetHorarioDisponibleSize() {
+	return LCostHoraProf.size();
+}
 

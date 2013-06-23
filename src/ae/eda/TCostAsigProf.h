@@ -14,8 +14,12 @@ class TCostAsigProf {
 		void PutCostHoraProf(TCostHoraProf);
 		void GenAddCostHoraProf(std::string, int);
 		void GenAddCostHoraProf(const char*, int);
+		//Metodos simples para mostrar
 		int GetCodAsig();
 		std::string Show();
+		
+		int GetHorarioDisponibleSize();
+
 };
 
 #endif

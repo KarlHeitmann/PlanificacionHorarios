@@ -5,6 +5,8 @@
 #include "eda/TProfesor.h"
 
 class CandidatoHorario: public TIndividuo {
+		//int ChooseHorario(std::vector<TCostHoraProf> *pvCostHoraProf);
+		int ChooseHorario(int intSize);
 	public:
 		CandidatoHorario();
 		void Display(void);
