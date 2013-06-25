@@ -9,6 +9,8 @@
 class AlgoritmoEvolutivo {
 	private:
 		unsigned uintPoblacion;
+		unsigned uintNGeneraciones;
+		float floatSumAdaptacion;
 		GeneradorDatos DataGen;
 		std::vector<TIndividuo> *pvIndividuos;
 		std::vector<TAula> *pvAulas;
@@ -16,7 +18,10 @@ class AlgoritmoEvolutivo {
 		std::vector<TProfesor> * pvProfesores;
 	public:
 		AlgoritmoEvolutivo(unsigned);
+		AlgoritmoEvolutivo(unsigned, unsigned);
 		void Run(void);
+		void Seleccion(std::vector<TIndividuo> *pvPoblacion);
+		void Evaluacion(std::vector<TIndividuo> *pvPoblacion);
 };
 
 

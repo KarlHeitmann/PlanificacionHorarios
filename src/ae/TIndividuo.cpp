@@ -26,3 +26,6 @@ void        TIndividuo::Display() {
 	std::cout << floatPuntuacion <<"\n";
 	std::cout << floatPuntAcu    <<"\n";
 }
+float TIndividuo::GetAdaptacion() {
+	return floatAdaptacion;
+}

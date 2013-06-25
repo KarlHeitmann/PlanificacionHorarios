@@ -20,6 +20,7 @@ class TIndividuo {
 		TIndividuo();
 		TIndividuo(float, float, float);
 		void Display(void);
+		float GetAdaptacion(void);
 		virtual void GenerarGenotipo(std::vector<TAula> *p1, std::vector<TProfesor> *p2, std::vector<TAsignatura> *p3);
 		float floatAdaptacion;
 		float floatPuntuacion;
