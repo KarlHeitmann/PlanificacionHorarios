@@ -15,6 +15,8 @@ AlgoritmoEvolutivo::AlgoritmoEvolutivo(unsigned _uintPoblacion, unsigned _uintNG
 	uintPoblacion = _uintPoblacion;
 	uintNGeneraciones = _uintNGeneraciones;
 	floatSumAdaptacion=0.0;
+	uintPosMejor=0;
+	floatAdapMejor = 1000.0;
 #if AE_VERBOSE > 0
 	std::cout << "---Recorriendo vector Aulas---\n";
 	for (unsigned i=0; i<pvAulas->size(); i++) {
@@ -40,10 +42,17 @@ void AlgoritmoEvolutivo::Run() {
 		pCH->GenerarGenotipo(pvAulas, pvProfesores, pvAsignaturas);
 		std::cout << "__________________________\nIndividuo: " << i <<"\nAdaptacion: " << pCH->floatAdaptacion << "\n";
 		floatSumAdaptacion += pCH->GetAdaptacion();
+		//Se trata de un problema de minimizacion: la adaptacion mas baja es la
+		//mejor
+		if (floatAdapMejor > pCH->GetAdaptacion()) {
+			uintPosMejor=i;
+			floatAdapMejor=pCH->GetAdaptacion();
+		}
 		pvIndividuos->push_back(*pCH);
 		delete pCH;
 	}
 	std::cout << "floatSumAdaptacion: " << floatSumAdaptacion << "\n";
+	std::cout << "Adap mejor: " << floatAdapMejor <<"\nPosicion mejor: " << uintPosMejor << "\n";
 	//Entra al loop de evolucion
 	//Evaluacion
 	Evaluacion(pvIndividuos);
@@ -68,10 +77,26 @@ void AlgoritmoEvolutivo::Run() {
 	
 }
 void AlgoritmoEvolutivo::Seleccion (std::vector<TIndividuo> *pvPoblacion) {
-	for (unsigned i=0; i<uintPoblacion; i++) {
-		;
-	}
+	;
 }
 void AlgoritmoEvolutivo::Evaluacion (std::vector<TIndividuo> *pvPoblacion) {
-	;
+	TIndividuo *pCH;
+	float floatPuntAcu=0.0;
+	float floatPuntuacion;
+	//std::cout << "---------------------------\n";	
+	for (unsigned i=0; i<uintPoblacion; i++) {
+		pCH = &(*pvPoblacion)[i];
+		floatPuntuacion = pCH->GetAdaptacion() / floatSumAdaptacion;
+		floatPuntAcu += floatPuntuacion;
+		pCH->SetPuntuacionAcumulada(floatPuntAcu);
+		pCH->SetPuntuacion(floatPuntuacion);
+		//std::cout << "Individuo " << i << " |Adaptacion: " << pCH->GetAdaptacion()<<"\n";
+	}
+	for (unsigned i=0; i<uintPoblacion; i++) {
+		pCH = &(*pvPoblacion)[i];
+		std::cout << "________________\nIndividuo " << i 
+			<< "\nAdaptacion: " << pCH->GetAdaptacion() 
+			<< "\nPuntuacion: " << pCH->GetPuntuacion() 
+			<< "\nPuntuacion Acumulada: " << pCH->GetPuntAcum() <<  "\n";
+	}	
 }

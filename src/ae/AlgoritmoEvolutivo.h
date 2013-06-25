@@ -10,7 +10,10 @@ class AlgoritmoEvolutivo {
 	private:
 		unsigned uintPoblacion;
 		unsigned uintNGeneraciones;
+		unsigned uintPosMejor;
+		float floatAdapMejor;
 		float floatSumAdaptacion;
+
 		GeneradorDatos DataGen;
 		std::vector<TIndividuo> *pvIndividuos;
 		std::vector<TAula> *pvAulas;

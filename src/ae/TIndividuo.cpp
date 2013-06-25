@@ -29,3 +29,9 @@ void        TIndividuo::Display() {
 float TIndividuo::GetAdaptacion() {
 	return floatAdaptacion;
 }
+void TIndividuo::SetPuntuacionAcumulada(float _floatPuntAcu) {
+	floatPuntAcu=_floatPuntAcu;
+}
+void TIndividuo::SetPuntuacion(float _floatPuntuacion) {
+	floatPuntuacion=_floatPuntuacion;
+}
