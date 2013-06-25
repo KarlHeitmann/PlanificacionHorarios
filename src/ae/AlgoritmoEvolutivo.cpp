@@ -15,6 +15,20 @@ AlgoritmoEvolutivo::AlgoritmoEvolutivo(unsigned _uintPoblacion, unsigned _uintNG
 	uintPoblacion = _uintPoblacion;
 	uintNGeneraciones = _uintNGeneraciones;
 	floatSumAdaptacion=0.0;
+#if AE_VERBOSE > 0
+	std::cout << "---Recorriendo vector Aulas---\n";
+	for (unsigned i=0; i<pvAulas->size(); i++) {
+		std::cout << (*pvAulas)[i].GetSummary();
+	}
+	std::cout << "---Recorriendo vector Profesores---\n";
+	for (unsigned i=0; i<pvProfesores->size(); i++) {
+		std::cout << (*pvProfesores)[i].GetSummary();
+	}
+	std::cout << "---Recorriendo vector Asignaturas---\n";
+	for (unsigned i=0; i<pvAsignaturas->size(); i++) {
+		std::cout << (*pvAsignaturas)[i].GetNombre() << "\n";
+	}
+#endif
 }
 
 void AlgoritmoEvolutivo::Run() {
@@ -30,20 +44,6 @@ void AlgoritmoEvolutivo::Run() {
 		delete pCH;
 	}
 	std::cout << "floatSumAdaptacion: " << floatSumAdaptacion << "\n";
-#if AE_VERBOSE > 0
-	std::cout << "---Recorriendo vector Aulas---\n";
-	for (unsigned i=0; i<pvAulas->size(); i++) {
-		std::cout << (*pvAulas)[i].GetSummary();
-	}
-	std::cout << "---Recorriendo vector Profesores---\n";
-	for (unsigned i=0; i<pvProfesores->size(); i++) {
-		std::cout << (*pvProfesores)[i].GetSummary();
-	}
-	std::cout << "---Recorriendo vector Asignaturas---\n";
-	for (unsigned i=0; i<pvAsignaturas->size(); i++) {
-		std::cout << (*pvAsignaturas)[i].GetNombre() << "\n";
-	}
-#endif
 	//Entra al loop de evolucion
 	//Evaluacion
 	Evaluacion(pvIndividuos);
