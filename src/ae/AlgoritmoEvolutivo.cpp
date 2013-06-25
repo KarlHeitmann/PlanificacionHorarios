@@ -7,6 +7,7 @@
 #include "eda/TAula.h"
 #include "eda/TProfesor.h"
 #define AE_VERBOSE 0
+#define RND (float)rand()/(float)RAND_MAX
 AlgoritmoEvolutivo::AlgoritmoEvolutivo(unsigned _uintPoblacion, unsigned _uintNGeneraciones) {
 	GeneradorDatos DataGen;
 	pvAulas = DataGen.VectorTAula();
@@ -77,26 +78,48 @@ void AlgoritmoEvolutivo::Run() {
 	
 }
 void AlgoritmoEvolutivo::Seleccion (std::vector<TIndividuo> *pvPoblacion) {
-	;
+	std::vector<TIndividuo> vPobAux;
+	unsigned uintSelSuper[uintPoblacion];
+	unsigned uintEscogido;
+	float floatProb;
+	vPobAux.reserve(uintPoblacion);
+	//std::cout << "______SELECCION______\n";
+	for (unsigned i=0; i<uintPoblacion; i++) {
+		floatProb = RND;
+		uintEscogido=0;
+		while ((floatProb > (*pvPoblacion)[uintEscogido].GetPuntAcum()) 
+				&& (uintEscogido < (uintPoblacion-1)))
+			uintEscogido++;
+		uintSelSuper[i]=uintEscogido;
+		//std::cout << "Individuo " << i <<" | Score: " << (*pvPoblacion)[i].GetPuntuacion() <<
+		//	" | Seleccionado: " << uintEscogido << "\n";
+	}
+	for (unsigned i=0; i< uintPoblacion; i++) {
+		vPobAux[i]=(*pvPoblacion)[uintSelSuper[i]];
+	}
+	for (unsigned i=0; i< uintPoblacion; i++) {
+		(*pvPoblacion)[i]=vPobAux[i];
+		//std::cout << "Individuo " << i <<" | Score: " << (*pvPoblacion)[i].GetPuntuacion() << "\n";
+	}
 }
 void AlgoritmoEvolutivo::Evaluacion (std::vector<TIndividuo> *pvPoblacion) {
 	TIndividuo *pCH;
 	float floatPuntAcu=0.0;
 	float floatPuntuacion;
-	//std::cout << "---------------------------\n";	
 	for (unsigned i=0; i<uintPoblacion; i++) {
 		pCH = &(*pvPoblacion)[i];
 		floatPuntuacion = pCH->GetAdaptacion() / floatSumAdaptacion;
 		floatPuntAcu += floatPuntuacion;
 		pCH->SetPuntuacionAcumulada(floatPuntAcu);
 		pCH->SetPuntuacion(floatPuntuacion);
-		//std::cout << "Individuo " << i << " |Adaptacion: " << pCH->GetAdaptacion()<<"\n";
 	}
+#if 0
 	for (unsigned i=0; i<uintPoblacion; i++) {
 		pCH = &(*pvPoblacion)[i];
 		std::cout << "________________\nIndividuo " << i 
 			<< "\nAdaptacion: " << pCH->GetAdaptacion() 
 			<< "\nPuntuacion: " << pCH->GetPuntuacion() 
 			<< "\nPuntuacion Acumulada: " << pCH->GetPuntAcum() <<  "\n";
-	}	
+	}
+#endif	
 }
