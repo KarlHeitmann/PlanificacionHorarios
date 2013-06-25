@@ -6,5 +6,9 @@ set (EXTRA_LIBS ${EXTRA_LIBS} AEDataStructure)
 add_executable(TIndividuoTest CandidatoHorario.cpp TIndividuo.cpp
 	TGen.cpp TIndividuoTest.cpp GeneradorDatos.cpp)
 
-target_link_libraries(TIndividuoTest AEDataStructure)
+add_executable(AlgoritmoEvolutivoTest AlgoritmoEvolutivoTest.cpp
+	AlgoritmoEvolutivo.cpp CandidatoHorario.cpp TIndividuo.cpp 
+	TGen.cpp GeneradorDatos.cpp)
 
+target_link_libraries(TIndividuoTest AEDataStructure)
+target_link_libraries(AlgoritmoEvolutivoTest AEDataStructure)

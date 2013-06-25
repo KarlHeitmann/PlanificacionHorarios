@@ -6,7 +6,7 @@
 #include "CandidatoHorario.h"
 #include "TGen.h"
 #include "eda/TCostHoraProf.h"
-#define IND_VERBOSE 1
+#define IND_VERBOSE 0
 CandidatoHorario::CandidatoHorario():TIndividuo() {
 	;
 }
