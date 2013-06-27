@@ -64,5 +64,24 @@ void CandidatoHorario::GenerarGenotipo(std::vector<TAula> *pvAulas,
 #endif
 	
 }
+void CandidatoHorario::ReproducirA(std::vector<TGen> Pareja) {
+	;//unsigned uintPuntoCruce = ;
+	//for (unsigned i=0; );
+}
 
+void CandidatoHorario::ReproducirB(std::vector<TGen> Pareja) {
+	;
+}
 
+void CandidatoHorario::ReproducirA(std::vector<TGen> Pareja, unsigned uintPuntoCruce) {
+	for (unsigned i=0; i<uintPuntoCruce; i++) {
+		Cromosoma[i]=Pareja[i];
+	}
+}
+
+void CandidatoHorario::ReproducirB(std::vector<TGen> Pareja, unsigned uintPuntoCruce) {
+	for (unsigned i=uintPuntoCruce; i<Pareja.size(); i++) {
+		Cromosoma[i]=Pareja[i];
+	}
+	
+}

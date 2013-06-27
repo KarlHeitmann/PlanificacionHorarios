@@ -6,6 +6,7 @@
 #include "AlgoritmoEvolutivo.h"
 #include "TIndividuo.h"
 #include "CandidatoHorario.h"
+#include "TGen.h"
 #include "GeneradorDatos.h"
 #include "eda/TAula.h"
 #include "eda/TProfesor.h"
@@ -116,8 +117,13 @@ void AlgoritmoEvolutivo::Reproduccion (std::vector<TIndividuo> *pvPoblacion) {
 	unsigned arrayuintSeleccionadoCruce[uintPoblacion];
 	unsigned uintNumSeleccionados=0;
 	unsigned uintPuntoCruce;
+	std::vector<TGen> CromosomaAux1;
+	std::vector<TGen> CromosomaAux2;
+	//TIndividuo *pCH;
+	CandidatoHorario * pCH;
 	float floatRollDice;
 	
+	//Tira los dados para escoger los individuos a cruzar
 	for (unsigned i=0; i<uintPoblacion; i++) {
 		floatRollDice = RND;
 		if (floatRollDice < floatProbabilidaDeCruce) {
@@ -125,15 +131,24 @@ void AlgoritmoEvolutivo::Reproduccion (std::vector<TIndividuo> *pvPoblacion) {
 			uintNumSeleccionados++;
 		}
 	}
+	//Si se ha seleccionado un numero impar de individuos, se resta uno
 	if ((uintNumSeleccionados % 2) == 1)
 		uintNumSeleccionados--;
 
+	//Se escoge un punto de cruce aleatorio
 	uintPuntoCruce=(unsigned) rand() % uintLargoCromosoma ;
 	//std::cout << "Punto de cruce: " << uintPuntoCruce << "\n";	
 	
 	for (unsigned i=0; i<(uintNumSeleccionados/2) ; i+=2) {
 		//std::cout << "Super loop " << i << "\n";
-		;
+		//pCH = &(*pvPoblacion)[i];
+		//pCH->Display();
+		(*pvPoblacion)[i].Display();
+		//CromosomaAux1 = (*pvPoblacion)[i].GetCromosoma();
+		//CromosomaAux2 = (*pvPoblacion)[i+1].GetCromosoma();
+		//(*pvPoblacion)[i].ReproducirA(CromosomaAux2);
+		//(*pvPoblacion)[i+1].ReproducirB(CromosomaAux1);
+
 	}
 
 }

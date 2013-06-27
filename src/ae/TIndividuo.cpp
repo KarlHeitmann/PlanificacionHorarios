@@ -17,10 +17,7 @@ TIndividuo::TIndividuo(float _floatAdaptacion, float _floatPuntuacion, float _fl
 	floatPuntAcu=_floatPuntAcu;
 }
 #endif
-void TIndividuo::GenerarGenotipo(std::vector<TAula> *pvAulas, 
-		std::vector<TProfesor> *pvProfesores, std::vector<TAsignatura> *pvAsignaturas) {
-	;
-}
+
 void        TIndividuo::Display() {
 	std::cout << floatAdaptacion <<"\n";
 	std::cout << floatPuntuacion <<"\n";

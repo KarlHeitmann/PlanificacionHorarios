@@ -25,10 +25,17 @@ class TIndividuo {
 		void SetPuntuacion(float);
 		float GetPuntuacion() {return floatPuntuacion; }
 		float GetPuntAcum() {return floatPuntAcu; }
-		virtual void GenerarGenotipo(std::vector<TAula> *p1, std::vector<TProfesor> *p2, std::vector<TAsignatura> *p3);
+		
+		// Atributos
 		float floatAdaptacion;
 		float floatPuntuacion;
 		float floatPuntAcu;
+
+		//Metodos stub
+		virtual void GenerarGenotipo(std::vector<TAula> *p1, std::vector<TProfesor> *p2, std::vector<TAsignatura> *p3) {;}
+		virtual std::vector<TGen> GetCromosoma(void) {;}
+		virtual void ReproducirA(std::vector<TGen> Pareja) {;}
+		virtual void ReproducirB(std::vector<TGen> Pareja) {;}
 };
 
 #endif
