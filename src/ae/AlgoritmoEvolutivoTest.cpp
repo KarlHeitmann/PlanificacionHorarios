@@ -2,7 +2,8 @@
 
 
 int main (int argc, char **argv) {
-	AlgoritmoEvolutivo AE(10, 2);
+	//                    TamPob, N_Generaciones, ProbDeCruce
+	AlgoritmoEvolutivo AE(10, 2, 0.5);
 	AE.Run();
 	return 0;
 }

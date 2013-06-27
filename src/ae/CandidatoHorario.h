@@ -17,5 +17,6 @@ class CandidatoHorario: public TIndividuo {
 		CandidatoHorario();
 		void Display(void);
 		virtual void GenerarGenotipo(std::vector<TAula> *p1, std::vector<TProfesor> *p2, std::vector<TAsignatura> *p3 );
+		//virtual void Reproducir(TIndividuo *pvPareja);
 };
 

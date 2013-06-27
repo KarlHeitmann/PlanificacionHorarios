@@ -13,7 +13,8 @@ class AlgoritmoEvolutivo {
 		unsigned uintPosMejor;
 		float floatAdapMejor;
 		float floatSumAdaptacion;
-
+		float floatProbabilidaDeCruce;
+		unsigned uintLargoCromosoma;
 		GeneradorDatos DataGen;
 		std::vector<TIndividuo> *pvIndividuos;
 		std::vector<TAula> *pvAulas;
@@ -21,10 +22,11 @@ class AlgoritmoEvolutivo {
 		std::vector<TProfesor> * pvProfesores;
 	public:
 		AlgoritmoEvolutivo(unsigned);
-		AlgoritmoEvolutivo(unsigned, unsigned);
+		AlgoritmoEvolutivo(unsigned, unsigned, float);
 		void Run(void);
 		void Seleccion(std::vector<TIndividuo> *pvPoblacion);
 		void Evaluacion(std::vector<TIndividuo> *pvPoblacion);
+		void Reproduccion(std::vector<TIndividuo> *pvPoblacion);
 };
 
 

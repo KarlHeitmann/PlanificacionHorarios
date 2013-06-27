@@ -1,5 +1,8 @@
 #include <vector>
 #include <iostream>
+#include <time.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include "AlgoritmoEvolutivo.h"
 #include "TIndividuo.h"
 #include "CandidatoHorario.h"
@@ -8,16 +11,22 @@
 #include "eda/TProfesor.h"
 #define AE_VERBOSE 0
 #define RND (float)rand()/(float)RAND_MAX
-AlgoritmoEvolutivo::AlgoritmoEvolutivo(unsigned _uintPoblacion, unsigned _uintNGeneraciones) {
+AlgoritmoEvolutivo::AlgoritmoEvolutivo(unsigned _uintPoblacion, unsigned _uintNGeneraciones, float _floatProbabilidaDeCruce) {
+	srand(time(NULL));
 	GeneradorDatos DataGen;
 	pvAulas = DataGen.VectorTAula();
 	pvAsignaturas = DataGen.VectorTAsignatura();
 	pvProfesores = DataGen.VectorTProfesor();
+	uintLargoCromosoma = (*pvAsignaturas).size();
+
 	uintPoblacion = _uintPoblacion;
 	uintNGeneraciones = _uintNGeneraciones;
+	floatProbabilidaDeCruce = _floatProbabilidaDeCruce;
+
 	floatSumAdaptacion=0.0;
 	uintPosMejor=0;
 	floatAdapMejor = 1000.0;
+
 #if AE_VERBOSE > 0
 	std::cout << "---Recorriendo vector Aulas---\n";
 	for (unsigned i=0; i<pvAulas->size(); i++) {
@@ -74,6 +83,7 @@ void AlgoritmoEvolutivo::Run() {
 		//Evaluacion (pob, tam_pob, lcrom, prob_mut)
 		//Evalua la nueva poblacion generada
 		Seleccion(pvIndividuos);
+		Reproduccion(pvIndividuos);
 	}
 	
 }
@@ -102,6 +112,32 @@ void AlgoritmoEvolutivo::Seleccion (std::vector<TIndividuo> *pvPoblacion) {
 		//std::cout << "Individuo " << i <<" | Score: " << (*pvPoblacion)[i].GetPuntuacion() << "\n";
 	}
 }
+void AlgoritmoEvolutivo::Reproduccion (std::vector<TIndividuo> *pvPoblacion) {
+	unsigned arrayuintSeleccionadoCruce[uintPoblacion];
+	unsigned uintNumSeleccionados=0;
+	unsigned uintPuntoCruce;
+	float floatRollDice;
+	
+	for (unsigned i=0; i<uintPoblacion; i++) {
+		floatRollDice = RND;
+		if (floatRollDice < floatProbabilidaDeCruce) {
+			arrayuintSeleccionadoCruce[uintNumSeleccionados] = i;
+			uintNumSeleccionados++;
+		}
+	}
+	if ((uintNumSeleccionados % 2) == 1)
+		uintNumSeleccionados--;
+
+	uintPuntoCruce=(unsigned) rand() % uintLargoCromosoma ;
+	//std::cout << "Punto de cruce: " << uintPuntoCruce << "\n";	
+	
+	for (unsigned i=0; i<(uintNumSeleccionados/2) ; i+=2) {
+		//std::cout << "Super loop " << i << "\n";
+		;
+	}
+
+}
+
 void AlgoritmoEvolutivo::Evaluacion (std::vector<TIndividuo> *pvPoblacion) {
 	TIndividuo *pCH;
 	float floatPuntAcu=0.0;
