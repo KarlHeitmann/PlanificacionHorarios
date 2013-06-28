@@ -14,8 +14,11 @@ class CandidatoHorario: public TIndividuo {
 #endif
 		int ChooseHorario(int intSize);
 		std::vector<TGen> Cromosoma;
+
+
 	public:
 		CandidatoHorario();
+		void ActualizarAdaptacion();
 		void Display(void);
 		virtual void GenerarGenotipo(std::vector<TAula> *p1, std::vector<TProfesor> *p2, std::vector<TAsignatura> *p3 );
 		virtual std::vector<TGen> GetCromosoma(void) { return Cromosoma; }

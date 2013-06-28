@@ -44,9 +44,11 @@ AlgoritmoEvolutivo::AlgoritmoEvolutivo(unsigned _uintPoblacion, unsigned _uintNG
 #endif
 }
 
-void AlgoritmoEvolutivo::Run() {
-	pvIndividuos = new std::vector<TIndividuo *>();	
-	//TIndividuo *pCH;
+//Coleccion metodos privados
+std::vector<TIndividuo *> *AlgoritmoEvolutivo::InitPob(){
+	std::vector<TIndividuo *> *pvPoblacion;
+	pvPoblacion=new std::vector<TIndividuo *>();
+	
 	CandidatoHorario *pCH;
 	//Genera poblacion inicial
 	for (unsigned i=0; i<uintPoblacion; i++) {
@@ -60,8 +62,14 @@ void AlgoritmoEvolutivo::Run() {
 			uintPosMejor=i;
 			floatAdapMejor=pCH->GetAdaptacion();
 		}
-		pvIndividuos->push_back(pCH);
+		pvPoblacion->push_back(pCH);
 	}
+	return pvPoblacion;
+}
+
+//Coleccion metodos publicos
+void AlgoritmoEvolutivo::Run() {
+	pvIndividuos = InitPob();
 	std::cout << "floatSumAdaptacion: " << floatSumAdaptacion << "\n";
 	std::cout << "Adap mejor: " << floatAdapMejor <<"\nPosicion mejor: " << uintPosMejor << "\n";
 	//Entra al loop de evolucion
@@ -137,18 +145,18 @@ void AlgoritmoEvolutivo::Reproduccion (std::vector<TIndividuo *> *pvPoblacion) {
 
 	//Se escoge un punto de cruce aleatorio
 	uintPuntoCruce=(unsigned) rand() % uintLargoCromosoma ;
-	//std::cout << "Punto de cruce: " << uintPuntoCruce << "\n";	
+	std::cout << "Punto de cruce: " << uintPuntoCruce << "\n";	
 	
 	for (unsigned i=0; i<(uintNumSeleccionados/2) ; i+=2) {
-		//std::cout << "Super loop " << i << "\n";
+		std::cout << "Super loop " << i << "\n";
 		//pCH = &(*pvPoblacion)[i];
 		//pCH->Display();
 		//(*pvPoblacion)[i]->Display();
 		//pvPoblacion[i]->Display();
 		CromosomaAux1 = (*pvPoblacion)[i]->GetCromosoma();
 		CromosomaAux2 = (*pvPoblacion)[i+1]->GetCromosoma();
-		(*pvPoblacion)[i].ReproducirA(CromosomaAux2);
-		(*pvPoblacion)[i+1].ReproducirB(CromosomaAux1);
+		(*pvPoblacion)[i]->ReproducirA(CromosomaAux2, uintPuntoCruce);
+		(*pvPoblacion)[i+1]->ReproducirB(CromosomaAux1, uintPuntoCruce);
 
 	}
 
