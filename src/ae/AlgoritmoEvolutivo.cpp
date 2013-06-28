@@ -143,12 +143,12 @@ void AlgoritmoEvolutivo::Reproduccion (std::vector<TIndividuo *> *pvPoblacion) {
 		//std::cout << "Super loop " << i << "\n";
 		//pCH = &(*pvPoblacion)[i];
 		//pCH->Display();
-		(*pvPoblacion)[i]->Display();
+		//(*pvPoblacion)[i]->Display();
 		//pvPoblacion[i]->Display();
-		//CromosomaAux1 = (*pvPoblacion)[i].GetCromosoma();
-		//CromosomaAux2 = (*pvPoblacion)[i+1].GetCromosoma();
-		//(*pvPoblacion)[i].ReproducirA(CromosomaAux2);
-		//(*pvPoblacion)[i+1].ReproducirB(CromosomaAux1);
+		CromosomaAux1 = (*pvPoblacion)[i]->GetCromosoma();
+		CromosomaAux2 = (*pvPoblacion)[i+1]->GetCromosoma();
+		(*pvPoblacion)[i].ReproducirA(CromosomaAux2);
+		(*pvPoblacion)[i+1].ReproducirB(CromosomaAux1);
 
 	}
 
