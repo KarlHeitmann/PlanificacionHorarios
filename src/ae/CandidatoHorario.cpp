@@ -50,11 +50,16 @@ void CandidatoHorario::GenerarGenotipo(std::vector<TAula> *pvAulas,
 	TGen *pGen;
 	TCostHoraProf *pCostHoraProf;
 	for (unsigned i=0; i<pvAsignaturas->size(); i++) {
+		//Posicion del profesor lo saca del atributo del objeto TAsignatura
 		uintPosProf = (unsigned) (*pvAsignaturas)[i].GetPosProf();
+		//Codigo de asignatura lo saca del att del objeto TAsignatura
 		intCodAsig = (*pvAsignaturas)[i].GetCodigo();
-		//O(n)
+		//Con complejidad O(n), busca la posicion de la asignatura dentro de las 
+		//asignaturas impartidas por el profesor
 		uintPosAsig = (*pvProfesores)[uintPosProf].FindAsigPos(intCodAsig);
 		
+		//pCostHoraProf almacena una hora aleatoria dentro de las horas
+		//disponibles para la asignatura
 		//uintEleccion = (*pvProfesores)[uintPosProf].EscogeHorarioDisplonibleDeAsignatura(uintPosAsig);
 		pCostHoraProf = (*pvProfesores)[uintPosProf].EscogeCostHoraProf(uintPosAsig);
 		//              CodAsig, Coste, NombreHorario
@@ -99,15 +104,27 @@ void CandidatoHorario::ReproducirB(std::vector<TGen> Pareja, unsigned uintPuntoC
 	ActualizarAdaptacion();
 	
 }
-void CandidatoHorario::Mutar(float floatTasaDeMutacion) {
+void CandidatoHorario::Mutar(float floatTasaDeMutacion, std::vector<TAula> *pvAulas,
+		std::vector<TProfesor> *pvProfesores, std::vector<TAsignatura> *pvAsignaturas) {
 	//std::cout << "Mutando...\n";
-	bool HaMutado=false;
+	//bool HaMutado=false;
 	float floatRollDice;
+	unsigned uintPosProf; int intCodAsig; unsigned uintPosAsig;
+	TCostHoraProf *pCostHoraProf;
+	TGen *pGen;
 	for (unsigned i=0; i<Cromosoma.size(); i++) {
 		//floatRollDice=(unsigned) rand() % Cromosoma.size();
 		floatRollDice=RND;
 		if (floatRollDice <= floatTasaDeMutacion) {
-			std::cout << "Muto!\n";
+			uintPosProf = (unsigned) (*pvAsignaturas)[i].GetPosProf();
+			intCodAsig = (*pvAsignaturas)[i].GetCodigo();
+			uintPosAsig = (*pvProfesores)[uintPosProf].FindAsigPos(intCodAsig);
+			pCostHoraProf = (*pvProfesores)[uintPosProf].EscogeCostHoraProf(uintPosAsig);
+			pGen = new TGen(intCodAsig, pCostHoraProf->GetCoste(), pCostHoraProf->GetHorario());
+			Cromosoma[i]=*pGen;
+			delete pGen;
+			std::cout << "Muto!\n"; 
+			break;
 		}
 	}
 }

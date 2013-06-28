@@ -174,7 +174,7 @@ void AlgoritmoEvolutivo::Reproduccion (std::vector<TIndividuo *> *pvPoblacion) {
 
 void AlgoritmoEvolutivo::Mutacion (std::vector<TIndividuo *> *pvPoblacion) {
 	for (unsigned i=0; i<uintPoblacion; i++) {
-		(*pvPoblacion)[i]->Mutar(floatTasaDeMutacion);
+		(*pvPoblacion)[i]->Mutar(floatTasaDeMutacion, pvAulas, pvProfesores, pvAsignaturas);
 	}
 }
 

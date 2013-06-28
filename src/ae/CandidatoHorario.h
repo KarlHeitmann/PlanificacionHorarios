@@ -19,7 +19,7 @@ class CandidatoHorario: public TIndividuo {
 	public:
 		CandidatoHorario();
 		void ActualizarAdaptacion();
-		void Mutar(float);
+		void Mutar(float, std::vector<TAula> *p1, std::vector<TProfesor> *p2, std::vector<TAsignatura> *p3);
 		void Display(void);
 		virtual void GenerarGenotipo(std::vector<TAula> *p1, std::vector<TProfesor> *p2, std::vector<TAsignatura> *p3 );
 		virtual std::vector<TGen> GetCromosoma(void) { return Cromosoma; }

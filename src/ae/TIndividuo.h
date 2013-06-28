@@ -22,7 +22,6 @@ class TIndividuo {
 		TIndividuo(float, float, float);
 		virtual void Display(void);
 		virtual void ActualizarAdaptacion(void) {;}
-		virtual void Mutar(float) {;}//const;
 		float GetAdaptacion(void);
 		void SetPuntuacionAcumulada(float);
 		void SetPuntuacion(float);
@@ -36,6 +35,7 @@ class TIndividuo {
 
 		//Metodos stub
 		virtual void GenerarGenotipo(std::vector<TAula> *p1, std::vector<TProfesor> *p2, std::vector<TAsignatura> *p3) {;}
+		virtual void Mutar(float, std::vector<TAula> *p1, std::vector<TProfesor> *p2, std::vector<TAsignatura> *p3) {;}//const;
 		virtual std::vector<TGen> GetCromosoma(void) {;}
 		virtual void ReproducirA(std::vector<TGen> Pareja) {std::cout << "Soy clase base reproducir A!";}
 		virtual void ReproducirB(std::vector<TGen> Pareja) {std::cout << "Soy clase base reproducir B!";}
