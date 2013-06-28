@@ -22,6 +22,7 @@ class TIndividuo {
 		TIndividuo(float, float, float);
 		virtual void Display(void);
 		virtual void ActualizarAdaptacion(void) {;}
+		virtual void Mutar(float) {;}//const;
 		float GetAdaptacion(void);
 		void SetPuntuacionAcumulada(float);
 		void SetPuntuacion(float);

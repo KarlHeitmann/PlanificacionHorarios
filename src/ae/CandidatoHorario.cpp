@@ -1,14 +1,16 @@
 #include <iostream>
-#include <stdlib.h>
 #include <vector>
-//#include <random>
+#include <time.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include "TIndividuo.h"
 #include "CandidatoHorario.h"
 #include "TGen.h"
 #include "eda/TCostHoraProf.h"
 #define IND_VERBOSE 0
+#define RND (float)rand()/(float)RAND_MAX
 CandidatoHorario::CandidatoHorario():TIndividuo() {
-	;
+	srand(time(NULL));	
 }
 
 void CandidatoHorario::ActualizarAdaptacion() {
@@ -96,4 +98,16 @@ void CandidatoHorario::ReproducirB(std::vector<TGen> Pareja, unsigned uintPuntoC
 	}
 	ActualizarAdaptacion();
 	
+}
+void CandidatoHorario::Mutar(float floatTasaDeMutacion) {
+	//std::cout << "Mutando...\n";
+	bool HaMutado=false;
+	float floatRollDice;
+	for (unsigned i=0; i<Cromosoma.size(); i++) {
+		//floatRollDice=(unsigned) rand() % Cromosoma.size();
+		floatRollDice=RND;
+		if (floatRollDice <= floatTasaDeMutacion) {
+			std::cout << "Muto!\n";
+		}
+	}
 }

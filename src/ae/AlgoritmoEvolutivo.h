@@ -14,6 +14,8 @@ class AlgoritmoEvolutivo {
 		float floatAdapMejor;
 		float floatSumAdaptacion;
 		float floatProbabilidaDeCruce;
+		float floatTasaDeMutacion;
+
 		unsigned uintLargoCromosoma;
 		GeneradorDatos DataGen;
 		std::vector<TIndividuo *> *pvIndividuos;
@@ -24,7 +26,7 @@ class AlgoritmoEvolutivo {
 		std::vector<TIndividuo *> *InitPob(void);
 	public:
 		AlgoritmoEvolutivo(unsigned);
-		AlgoritmoEvolutivo(unsigned, unsigned, float);
+		AlgoritmoEvolutivo(unsigned, unsigned, float, float);
 		void Run(void);
 		void Seleccion(std::vector<TIndividuo *> *pvPoblacion);
 		void Evaluacion(std::vector<TIndividuo *> *pvPoblacion);

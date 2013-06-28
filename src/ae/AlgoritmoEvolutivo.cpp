@@ -12,7 +12,8 @@
 #include "eda/TProfesor.h"
 #define AE_VERBOSE 0
 #define RND (float)rand()/(float)RAND_MAX
-AlgoritmoEvolutivo::AlgoritmoEvolutivo(unsigned _uintPoblacion, unsigned _uintNGeneraciones, float _floatProbabilidaDeCruce) {
+AlgoritmoEvolutivo::AlgoritmoEvolutivo(unsigned _uintPoblacion, unsigned _uintNGeneraciones, float _floatProbabilidaDeCruce,
+		float _floatTasaDeMutacion) {
 	srand(time(NULL));
 	GeneradorDatos DataGen;
 	pvAulas = DataGen.VectorTAula();
@@ -23,7 +24,7 @@ AlgoritmoEvolutivo::AlgoritmoEvolutivo(unsigned _uintPoblacion, unsigned _uintNG
 	uintPoblacion = _uintPoblacion;
 	uintNGeneraciones = _uintNGeneraciones;
 	floatProbabilidaDeCruce = _floatProbabilidaDeCruce;
-
+	floatTasaDeMutacion = _floatTasaDeMutacion;
 	floatSumAdaptacion=0.0;
 	uintPosMejor=0;
 	floatAdapMejor = 1000.0;
@@ -160,7 +161,7 @@ void AlgoritmoEvolutivo::Reproduccion (std::vector<TIndividuo *> *pvPoblacion) {
 		//std::cout << "__________________________\nIndividuo: " << i+1 <<"\nAdaptacion: " << (*pvPoblacion)[i+1]->floatAdaptacion << "\n";
 		//std::cout << "<<<<<<SIGUIENTE PAREJA>>>>>>>>\n";
 	}
-#if 1
+#if 0
 	floatSumAdaptacion=0;
 	for (unsigned i=0; i<uintPoblacion; i++) {
 		floatSumAdaptacion+=(*pvPoblacion)[i]->GetAdaptacion();
@@ -172,7 +173,9 @@ void AlgoritmoEvolutivo::Reproduccion (std::vector<TIndividuo *> *pvPoblacion) {
 }
 
 void AlgoritmoEvolutivo::Mutacion (std::vector<TIndividuo *> *pvPoblacion) {
-	;
+	for (unsigned i=0; i<uintPoblacion; i++) {
+		(*pvPoblacion)[i]->Mutar(floatTasaDeMutacion);
+	}
 }
 
 void AlgoritmoEvolutivo::Evaluacion (std::vector<TIndividuo *> *pvPoblacion) {
