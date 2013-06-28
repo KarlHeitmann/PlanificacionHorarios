@@ -23,6 +23,7 @@ class AlgoritmoEvolutivo {
 		std::vector<TAsignatura> * pvAsignaturas;
 		std::vector<TProfesor> * pvProfesores;
 
+		//Metodos privados
 		std::vector<TIndividuo *> *InitPob(void);
 	public:
 		AlgoritmoEvolutivo(unsigned);
