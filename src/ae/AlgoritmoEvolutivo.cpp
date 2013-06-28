@@ -54,7 +54,7 @@ std::vector<TIndividuo *> *AlgoritmoEvolutivo::InitPob(){
 	for (unsigned i=0; i<uintPoblacion; i++) {
 		pCH=new CandidatoHorario;
 		pCH->GenerarGenotipo(pvAulas, pvProfesores, pvAsignaturas);
-		std::cout << "__________________________\nIndividuo: " << i <<"\nAdaptacion: " << pCH->floatAdaptacion << "\n";
+		//std::cout << "__________________________\nIndividuo: " << i <<"\nAdaptacion: " << pCH->floatAdaptacion << "\n";
 		floatSumAdaptacion += pCH->GetAdaptacion();
 		//Se trata de un problema de minimizacion: la adaptacion mas baja es la
 		//mejor
@@ -93,6 +93,7 @@ void AlgoritmoEvolutivo::Run() {
 		//Evalua la nueva poblacion generada
 		Seleccion(pvIndividuos);
 		Reproduccion(pvIndividuos);
+		Mutacion(pvIndividuos);
 	}
 	
 }
@@ -145,21 +146,33 @@ void AlgoritmoEvolutivo::Reproduccion (std::vector<TIndividuo *> *pvPoblacion) {
 
 	//Se escoge un punto de cruce aleatorio
 	uintPuntoCruce=(unsigned) rand() % uintLargoCromosoma ;
-	std::cout << "Punto de cruce: " << uintPuntoCruce << "\n";	
-	
-	for (unsigned i=0; i<(uintNumSeleccionados/2) ; i+=2) {
-		std::cout << "Super loop " << i << "\n";
-		//pCH = &(*pvPoblacion)[i];
-		//pCH->Display();
-		//(*pvPoblacion)[i]->Display();
-		//pvPoblacion[i]->Display();
+	//std::cout << "Punto de cruce: " << uintPuntoCruce << "\n";	
+	//std::cout << "NumSeleccionados: " << uintNumSeleccionados << "\n\n";
+	for (unsigned i=0; i<=(uintNumSeleccionados/2) ; i+=2) {
+		//std::cout << "__________________________\nIndividuo: " << i <<"\nAdaptacion: " << (*pvPoblacion)[i]->floatAdaptacion << "\n";
+		//std::cout << "__________________________\nIndividuo: " << i+1 <<"\nAdaptacion: " << (*pvPoblacion)[i+1]->floatAdaptacion << "\n";
+		//std::cout << "\n.......Reproduccion.......\n\n";
 		CromosomaAux1 = (*pvPoblacion)[i]->GetCromosoma();
 		CromosomaAux2 = (*pvPoblacion)[i+1]->GetCromosoma();
 		(*pvPoblacion)[i]->ReproducirA(CromosomaAux2, uintPuntoCruce);
 		(*pvPoblacion)[i+1]->ReproducirB(CromosomaAux1, uintPuntoCruce);
-
+		//std::cout << "Individuo: " << i <<"\nAdaptacion: " << (*pvPoblacion)[i]->floatAdaptacion << "\n";
+		//std::cout << "__________________________\nIndividuo: " << i+1 <<"\nAdaptacion: " << (*pvPoblacion)[i+1]->floatAdaptacion << "\n";
+		//std::cout << "<<<<<<SIGUIENTE PAREJA>>>>>>>>\n";
 	}
+#if 1
+	floatSumAdaptacion=0;
+	for (unsigned i=0; i<uintPoblacion; i++) {
+		floatSumAdaptacion+=(*pvPoblacion)[i]->GetAdaptacion();
+	}
+	//std::cout << "TRACE!\n";
+	Evaluacion(pvPoblacion);
+	std::cout << "floatSumAdaptacion: " << floatSumAdaptacion << "\n";
+#endif
+}
 
+void AlgoritmoEvolutivo::Mutacion (std::vector<TIndividuo *> *pvPoblacion) {
+	;
 }
 
 void AlgoritmoEvolutivo::Evaluacion (std::vector<TIndividuo *> *pvPoblacion) {

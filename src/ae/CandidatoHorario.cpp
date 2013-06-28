@@ -81,7 +81,8 @@ void CandidatoHorario::ReproducirB(std::vector<TGen> Pareja) {
 }
 
 void CandidatoHorario::ReproducirA(std::vector<TGen> Pareja, unsigned uintPuntoCruce) {
-	std::cout << "Reproduciendo!\n";
+	//Este tipo de reproduccion reemplaza a los padres, no importa como resulte
+	//el individuo hijo
 	for (unsigned i=0; i<uintPuntoCruce; i++) {
 		Cromosoma[i]=Pareja[i];
 	}
@@ -89,7 +90,7 @@ void CandidatoHorario::ReproducirA(std::vector<TGen> Pareja, unsigned uintPuntoC
 }
 
 void CandidatoHorario::ReproducirB(std::vector<TGen> Pareja, unsigned uintPuntoCruce) {
-	std::cout << "Reproduciendo!\n";
+	//std::cout << "Reproduciendo!\n";
 	for (unsigned i=uintPuntoCruce; i<Pareja.size(); i++) {
 		Cromosoma[i]=Pareja[i];
 	}

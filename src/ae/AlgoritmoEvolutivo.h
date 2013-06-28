@@ -29,6 +29,7 @@ class AlgoritmoEvolutivo {
 		void Seleccion(std::vector<TIndividuo *> *pvPoblacion);
 		void Evaluacion(std::vector<TIndividuo *> *pvPoblacion);
 		void Reproduccion(std::vector<TIndividuo *> *pvPoblacion);
+		void Mutacion(std::vector<TIndividuo *> *pvPoblacion);
 };
 
 
