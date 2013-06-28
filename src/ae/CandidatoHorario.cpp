@@ -10,6 +10,26 @@
 CandidatoHorario::CandidatoHorario():TIndividuo() {
 	;
 }
+
+void CandidatoHorario::ActualizarAdaptacion() {
+	floatAdaptacion=0;
+	//Calculo de adaptacion basico
+	for (unsigned i=0; i<Cromosoma.size(); i++) {
+		floatAdaptacion+=(float) Cromosoma[i].GetCoste();
+#if IND_VERBOSE
+		std::cout << "Contenido del cromosoma\n";
+		std::cout << "Cromosoma: " << i <<"\n";
+		std::cout << "Codigo asignatura: " << Cromosoma[i].GetCodAsig() <<"\n";
+		std::cout << "Coste: " << Cromosoma[i].GetCoste() <<"\n";
+		std::cout << "Horario: " << Cromosoma[i].GetHorario() <<"\n";
+#endif
+	}
+#if IND_VERBOSE
+	std::cout << "Adaptacion del Individuo: " << floatAdaptacion << "\n";
+#endif
+	
+}
+
 void CandidatoHorario::Display() {
 	TIndividuo::Display();
 	std::cout << "Soy un candidato\n";
@@ -48,20 +68,7 @@ void CandidatoHorario::GenerarGenotipo(std::vector<TAula> *pvAulas,
 		std::cout << "Cantidad de horarios disponibles: " << uintEleccion << "\n";
 #endif
 	}
-	//Calculo de adaptacion basico
-	for (unsigned i=0; i<Cromosoma.size(); i++) {
-		floatAdaptacion+=(float) Cromosoma[i].GetCoste();
-#if IND_VERBOSE
-		std::cout << "Contenido del cromosoma\n";
-		std::cout << "Cromosoma: " << i <<"\n";
-		std::cout << "Codigo asignatura: " << Cromosoma[i].GetCodAsig() <<"\n";
-		std::cout << "Coste: " << Cromosoma[i].GetCoste() <<"\n";
-		std::cout << "Horario: " << Cromosoma[i].GetHorario() <<"\n";
-#endif
-	}
-#if IND_VERBOSE
-	std::cout << "Adaptacion del Individuo: " << floatAdaptacion << "\n";
-#endif
+	ActualizarAdaptacion();
 	
 }
 void CandidatoHorario::ReproducirA(std::vector<TGen> Pareja) {
@@ -74,14 +81,18 @@ void CandidatoHorario::ReproducirB(std::vector<TGen> Pareja) {
 }
 
 void CandidatoHorario::ReproducirA(std::vector<TGen> Pareja, unsigned uintPuntoCruce) {
+	std::cout << "Reproduciendo!\n";
 	for (unsigned i=0; i<uintPuntoCruce; i++) {
 		Cromosoma[i]=Pareja[i];
 	}
+	ActualizarAdaptacion();
 }
 
 void CandidatoHorario::ReproducirB(std::vector<TGen> Pareja, unsigned uintPuntoCruce) {
+	std::cout << "Reproduciendo!\n";
 	for (unsigned i=uintPuntoCruce; i<Pareja.size(); i++) {
 		Cromosoma[i]=Pareja[i];
 	}
+	ActualizarAdaptacion();
 	
 }

@@ -20,6 +20,8 @@ class AlgoritmoEvolutivo {
 		std::vector<TAula> *pvAulas;
 		std::vector<TAsignatura> * pvAsignaturas;
 		std::vector<TProfesor> * pvProfesores;
+
+		std::vector<TIndividuo *> *InitPob(void);
 	public:
 		AlgoritmoEvolutivo(unsigned);
 		AlgoritmoEvolutivo(unsigned, unsigned, float);
