@@ -45,8 +45,9 @@ AlgoritmoEvolutivo::AlgoritmoEvolutivo(unsigned _uintPoblacion, unsigned _uintNG
 }
 
 void AlgoritmoEvolutivo::Run() {
-	pvIndividuos = new std::vector<TIndividuo>();	
-	TIndividuo *pCH;
+	pvIndividuos = new std::vector<TIndividuo *>();	
+	//TIndividuo *pCH;
+	CandidatoHorario *pCH;
 	//Genera poblacion inicial
 	for (unsigned i=0; i<uintPoblacion; i++) {
 		pCH=new CandidatoHorario;
@@ -59,8 +60,7 @@ void AlgoritmoEvolutivo::Run() {
 			uintPosMejor=i;
 			floatAdapMejor=pCH->GetAdaptacion();
 		}
-		pvIndividuos->push_back(*pCH);
-		delete pCH;
+		pvIndividuos->push_back(pCH);
 	}
 	std::cout << "floatSumAdaptacion: " << floatSumAdaptacion << "\n";
 	std::cout << "Adap mejor: " << floatAdapMejor <<"\nPosicion mejor: " << uintPosMejor << "\n";
@@ -88,8 +88,8 @@ void AlgoritmoEvolutivo::Run() {
 	}
 	
 }
-void AlgoritmoEvolutivo::Seleccion (std::vector<TIndividuo> *pvPoblacion) {
-	std::vector<TIndividuo> vPobAux;
+void AlgoritmoEvolutivo::Seleccion (std::vector<TIndividuo *> *pvPoblacion) {
+	std::vector<TIndividuo *> vPobAux;
 	unsigned uintSelSuper[uintPoblacion];
 	unsigned uintEscogido;
 	float floatProb;
@@ -98,7 +98,7 @@ void AlgoritmoEvolutivo::Seleccion (std::vector<TIndividuo> *pvPoblacion) {
 	for (unsigned i=0; i<uintPoblacion; i++) {
 		floatProb = RND;
 		uintEscogido=0;
-		while ((floatProb > (*pvPoblacion)[uintEscogido].GetPuntAcum()) 
+		while ((floatProb > (*pvPoblacion)[uintEscogido]->GetPuntAcum()) 
 				&& (uintEscogido < (uintPoblacion-1)))
 			uintEscogido++;
 		uintSelSuper[i]=uintEscogido;
@@ -113,14 +113,14 @@ void AlgoritmoEvolutivo::Seleccion (std::vector<TIndividuo> *pvPoblacion) {
 		//std::cout << "Individuo " << i <<" | Score: " << (*pvPoblacion)[i].GetPuntuacion() << "\n";
 	}
 }
-void AlgoritmoEvolutivo::Reproduccion (std::vector<TIndividuo> *pvPoblacion) {
+void AlgoritmoEvolutivo::Reproduccion (std::vector<TIndividuo *> *pvPoblacion) {
 	unsigned arrayuintSeleccionadoCruce[uintPoblacion];
 	unsigned uintNumSeleccionados=0;
 	unsigned uintPuntoCruce;
 	std::vector<TGen> CromosomaAux1;
 	std::vector<TGen> CromosomaAux2;
-	//TIndividuo *pCH;
-	CandidatoHorario * pCH;
+	TIndividuo *pCH;
+	//CandidatoHorario * pCH;
 	float floatRollDice;
 	
 	//Tira los dados para escoger los individuos a cruzar
@@ -143,7 +143,8 @@ void AlgoritmoEvolutivo::Reproduccion (std::vector<TIndividuo> *pvPoblacion) {
 		//std::cout << "Super loop " << i << "\n";
 		//pCH = &(*pvPoblacion)[i];
 		//pCH->Display();
-		(*pvPoblacion)[i].Display();
+		(*pvPoblacion)[i]->Display();
+		//pvPoblacion[i]->Display();
 		//CromosomaAux1 = (*pvPoblacion)[i].GetCromosoma();
 		//CromosomaAux2 = (*pvPoblacion)[i+1].GetCromosoma();
 		//(*pvPoblacion)[i].ReproducirA(CromosomaAux2);
@@ -153,12 +154,12 @@ void AlgoritmoEvolutivo::Reproduccion (std::vector<TIndividuo> *pvPoblacion) {
 
 }
 
-void AlgoritmoEvolutivo::Evaluacion (std::vector<TIndividuo> *pvPoblacion) {
+void AlgoritmoEvolutivo::Evaluacion (std::vector<TIndividuo *> *pvPoblacion) {
 	TIndividuo *pCH;
 	float floatPuntAcu=0.0;
 	float floatPuntuacion;
 	for (unsigned i=0; i<uintPoblacion; i++) {
-		pCH = &(*pvPoblacion)[i];
+		pCH = (*pvPoblacion)[i];
 		floatPuntuacion = pCH->GetAdaptacion() / floatSumAdaptacion;
 		floatPuntAcu += floatPuntuacion;
 		pCH->SetPuntuacionAcumulada(floatPuntAcu);

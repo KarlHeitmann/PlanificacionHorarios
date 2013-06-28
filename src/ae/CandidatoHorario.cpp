@@ -12,7 +12,7 @@ CandidatoHorario::CandidatoHorario():TIndividuo() {
 }
 void CandidatoHorario::Display() {
 	TIndividuo::Display();
-	std::cout << "Soy un candidato";
+	std::cout << "Soy un candidato\n";
 }
 int CandidatoHorario::ChooseHorario(int intSize) {
 	return 0;

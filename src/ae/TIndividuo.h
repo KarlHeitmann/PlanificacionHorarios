@@ -19,7 +19,7 @@ class TIndividuo {
 		//std::vector<TGen> vGenes;
 		TIndividuo();
 		TIndividuo(float, float, float);
-		void Display(void);
+		virtual void Display(void);
 		float GetAdaptacion(void);
 		void SetPuntuacionAcumulada(float);
 		void SetPuntuacion(float);
