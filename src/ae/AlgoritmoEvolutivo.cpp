@@ -73,8 +73,8 @@ std::vector<TIndividuo *> *AlgoritmoEvolutivo::InitPob(){
 
 //Coleccion metodos publicos
 void AlgoritmoEvolutivo::Run() {
-	std::cout << "floatSumAdaptacion: " << floatSumAdaptacion << "\n";
-	std::cout << "Adap mejor: " << floatAdapMejor <<"\nPosicion mejor: " << uintPosMejor << "\n";
+	//std::cout << "floatSumAdaptacion: " << floatSumAdaptacion << "\n";
+	//std::cout << "Adap mejor: " << floatAdapMejor <<"\nPosicion mejor: " << uintPosMejor << "\n";
 	//Entra al loop de evolucion
 	//Evaluacion
 	for (unsigned i=0; i<uintNGeneraciones; i++) {
@@ -97,9 +97,9 @@ void AlgoritmoEvolutivo::Run() {
 		Reproduccion();
 		Mutacion();
 		Evaluacion();
-		std::cout << "floatSumAdaptacion: " << floatSumAdaptacion << "\n";
+		//std::cout << "floatSumAdaptacion: " << floatSumAdaptacion << "\n";
 		//std::cout << "Adap mejor: " << floatAdapMejor <<"\nPosicion mejor: " << uintPosMejor << "\n";
-		std::cout << "**************************\n";
+		//std::cout << "**************************\n";
 	}
 	
 }
@@ -135,7 +135,6 @@ void AlgoritmoEvolutivo::Reproduccion () {
 	std::vector<TGen> CromosomaAux1;
 	std::vector<TGen> CromosomaAux2;
 	TIndividuo *pCH;
-	//CandidatoHorario * pCH;
 	float floatRollDice;
 	
 	//Tira los dados para escoger los individuos a cruzar
@@ -166,15 +165,6 @@ void AlgoritmoEvolutivo::Reproduccion () {
 		//std::cout << "__________________________\nIndividuo: " << i+1 <<"\nAdaptacion: " << (*pvPoblacion)[i+1]->floatAdaptacion << "\n";
 		//std::cout << "<<<<<<SIGUIENTE PAREJA>>>>>>>>\n";
 	}
-#if 0
-	floatSumAdaptacion=0;
-	for (unsigned i=0; i<uintPoblacion; i++) {
-		floatSumAdaptacion+=(*pvPoblacion)[i]->GetAdaptacion();
-	}
-	//std::cout << "TRACE!\n";
-	Evaluacion(pvPoblacion);
-	std::cout << "floatSumAdaptacion: " << floatSumAdaptacion << "\n";
-#endif
 }
 
 void AlgoritmoEvolutivo::Mutacion () {
