@@ -44,9 +44,6 @@ void CandidatoHorario::GenerarGenotipo(std::vector<TAula> *pvAulas,
 	unsigned uintPosProf;
 	unsigned uintPosAsig;
 	int intCodAsig;
-	int intTamanioTemp;
-	unsigned uintEleccion;
-	std::vector<TCostHoraProf> *pvCostHoraProf;
 	TGen *pGen;
 	TCostHoraProf *pCostHoraProf;
 	for (unsigned i=0; i<pvAsignaturas->size(); i++) {

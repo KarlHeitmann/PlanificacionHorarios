@@ -37,6 +37,7 @@ class TIndividuo {
 		virtual void GenerarGenotipo(std::vector<TAula> *p1, std::vector<TProfesor> *p2, std::vector<TAsignatura> *p3) {;}
 		virtual void Mutar(float, std::vector<TAula> *p1, std::vector<TProfesor> *p2, std::vector<TAsignatura> *p3) {;}//const;
 		virtual std::vector<TGen> GetCromosoma(void) {;}
+		//virtual std::vector<TGen> GetCromosoma(void) const=0;
 		virtual void ReproducirA(std::vector<TGen> Pareja) {std::cout << "Soy clase base reproducir A!";}
 		virtual void ReproducirB(std::vector<TGen> Pareja) {std::cout << "Soy clase base reproducir B!";}
 		virtual void ReproducirA(std::vector<TGen> Pareja, unsigned) {std::cout << "Soy clase base reproducir A!";}
