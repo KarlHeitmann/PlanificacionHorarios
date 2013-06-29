@@ -29,8 +29,8 @@ AlgoritmoEvolutivo::AlgoritmoEvolutivo(unsigned _uintPoblacion, unsigned _uintNG
 	uintPosMejor=0;
 	floatAdapMejor = 1000.0;
 	
-	pvIndividuos = InitPob();
-	EvaluacionFast(pvIndividuos);
+	InitPob();
+	EvaluacionFast();
 
 #if AE_VERBOSE > 0
 	std::cout << "---Recorriendo vector Aulas---\n";
@@ -50,7 +50,7 @@ AlgoritmoEvolutivo::AlgoritmoEvolutivo(unsigned _uintPoblacion, unsigned _uintNG
 
 //Coleccion metodos privados
 std::vector<TIndividuo *> *AlgoritmoEvolutivo::InitPob(){
-	std::vector<TIndividuo *> *pvPoblacion;
+	//std::vector<TIndividuo *> *pvPoblacion;
 	pvPoblacion=new std::vector<TIndividuo *>();
 	
 	CandidatoHorario *pCH;
@@ -93,17 +93,17 @@ void AlgoritmoEvolutivo::Run() {
 		//
 		//Evaluacion (pob, tam_pob, lcrom, prob_mut)
 		//Evalua la nueva poblacion generada
-		Seleccion(pvIndividuos);
-		Reproduccion(pvIndividuos);
-		Mutacion(pvIndividuos);
-		Evaluacion(pvIndividuos);
+		Seleccion();
+		Reproduccion();
+		Mutacion();
+		Evaluacion();
 		std::cout << "floatSumAdaptacion: " << floatSumAdaptacion << "\n";
 		//std::cout << "Adap mejor: " << floatAdapMejor <<"\nPosicion mejor: " << uintPosMejor << "\n";
 		std::cout << "**************************\n";
 	}
 	
 }
-void AlgoritmoEvolutivo::Seleccion (std::vector<TIndividuo *> *pvPoblacion) {
+void AlgoritmoEvolutivo::Seleccion () {
 	std::vector<TIndividuo *> vPobAux;
 	unsigned uintSelSuper[uintPoblacion];
 	unsigned uintEscogido;
@@ -128,7 +128,7 @@ void AlgoritmoEvolutivo::Seleccion (std::vector<TIndividuo *> *pvPoblacion) {
 		//std::cout << "Individuo " << i <<" | Score: " << (*pvPoblacion)[i].GetPuntuacion() << "\n";
 	}
 }
-void AlgoritmoEvolutivo::Reproduccion (std::vector<TIndividuo *> *pvPoblacion) {
+void AlgoritmoEvolutivo::Reproduccion () {
 	unsigned arrayuintSeleccionadoCruce[uintPoblacion];
 	unsigned uintNumSeleccionados=0;
 	unsigned uintPuntoCruce;
@@ -177,13 +177,13 @@ void AlgoritmoEvolutivo::Reproduccion (std::vector<TIndividuo *> *pvPoblacion) {
 #endif
 }
 
-void AlgoritmoEvolutivo::Mutacion (std::vector<TIndividuo *> *pvPoblacion) {
+void AlgoritmoEvolutivo::Mutacion () {
 	for (unsigned i=0; i<uintPoblacion; i++) {
 		(*pvPoblacion)[i]->Mutar(floatTasaDeMutacion, pvAulas, pvProfesores, pvAsignaturas);
 	}
 }
 
-void AlgoritmoEvolutivo::Evaluacion (std::vector<TIndividuo *> *pvPoblacion) {
+void AlgoritmoEvolutivo::Evaluacion () {
 	TIndividuo *pCH;
 	float floatPuntAcu=0.0;
 	float floatPuntuacion;
@@ -208,7 +208,7 @@ void AlgoritmoEvolutivo::Evaluacion (std::vector<TIndividuo *> *pvPoblacion) {
 	}
 #endif	
 }
-void AlgoritmoEvolutivo::EvaluacionFast (std::vector<TIndividuo *> *pvPoblacion) {
+void AlgoritmoEvolutivo::EvaluacionFast () {
 	TIndividuo *pCH;
 	float floatPuntAcu=0.0;
 	float floatPuntuacion;
