@@ -28,6 +28,9 @@ AlgoritmoEvolutivo::AlgoritmoEvolutivo(unsigned _uintPoblacion, unsigned _uintNG
 	floatSumAdaptacion=0.0;
 	uintPosMejor=0;
 	floatAdapMejor = 1000.0;
+	
+	pvIndividuos = InitPob();
+	EvaluacionFast(pvIndividuos);
 
 #if AE_VERBOSE > 0
 	std::cout << "---Recorriendo vector Aulas---\n";
@@ -70,12 +73,10 @@ std::vector<TIndividuo *> *AlgoritmoEvolutivo::InitPob(){
 
 //Coleccion metodos publicos
 void AlgoritmoEvolutivo::Run() {
-	pvIndividuos = InitPob();
 	std::cout << "floatSumAdaptacion: " << floatSumAdaptacion << "\n";
 	std::cout << "Adap mejor: " << floatAdapMejor <<"\nPosicion mejor: " << uintPosMejor << "\n";
 	//Entra al loop de evolucion
 	//Evaluacion
-	EvaluacionFast(pvIndividuos);
 	for (unsigned i=0; i<uintNGeneraciones; i++) {
 		//Seleccion (Pob, paramentros) 
 		//Selecciona a los supervivientes de la poblacion
