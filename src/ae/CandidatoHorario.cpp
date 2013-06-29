@@ -7,7 +7,7 @@
 #include "CandidatoHorario.h"
 #include "TGen.h"
 #include "eda/TCostHoraProf.h"
-#define IND_VERBOSE 0
+#define IND_VERBOSE 1
 #define RND (float)rand()/(float)RAND_MAX
 CandidatoHorario::CandidatoHorario():TIndividuo() {
 	srand(time(NULL));	
@@ -16,18 +16,28 @@ CandidatoHorario::CandidatoHorario():TIndividuo() {
 void CandidatoHorario::ActualizarAdaptacion() {
 	floatAdaptacion=0;
 	//Calculo de adaptacion basico
+#if IND_VERBOSE
+	std::cout << "Contenido del cromosoma\n";
+#endif
 	for (unsigned i=0; i<Cromosoma.size(); i++) {
 		floatAdaptacion+=(float) Cromosoma[i].GetCoste();
 #if IND_VERBOSE
+#if 0
 		std::cout << "Contenido del cromosoma\n";
 		std::cout << "Cromosoma: " << i <<"\n";
 		std::cout << "Codigo asignatura: " << Cromosoma[i].GetCodAsig() <<"\n";
 		std::cout << "Coste: " << Cromosoma[i].GetCoste() <<"\n";
 		std::cout << "Horario: " << Cromosoma[i].GetHorario() <<"\n";
+#else
+		std::cout << "Gen " << i ;//<<"\n";
+		std::cout << " | Cod asig: " << Cromosoma[i].GetCodAsig();// <<"\n";
+		std::cout << " | Coste: " << Cromosoma[i].GetCoste();// <<"\n";
+		std::cout << " | Horario: " << Cromosoma[i].GetHorario() <<"\n";
+#endif
 #endif
 	}
 #if IND_VERBOSE
-	std::cout << "Adaptacion del Individuo: " << floatAdaptacion << "\n";
+	std::cout << "Adaptacion: " << floatAdaptacion << "\n";
 #endif
 	
 }
@@ -65,11 +75,13 @@ void CandidatoHorario::GenerarGenotipo(std::vector<TAula> *pvAulas,
 		Cromosoma.push_back(*pGen);
 		delete pGen;
 #if IND_VERBOSE > 0
+#if 0
 		std::cout << "________________________________________________________\n";
 		std::cout << "Horarios disponibles del profesor " << (*pvProfesores)[uintPosProf].GetNombre()<<"\n";
 		std::cout << "Asignatura: " << intCodAsig << "\n";
 		std::cout << "Posicion de la asignatura dentro del profesor: " << uintPosAsig << "\n";
-		std::cout << "Cantidad de horarios disponibles: " << uintEleccion << "\n";
+		//std::cout << "Cantidad de horarios disponibles: " << uintEleccion << "\n";
+#endif
 #endif
 	}
 	ActualizarAdaptacion();

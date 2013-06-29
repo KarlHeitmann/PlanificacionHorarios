@@ -2,6 +2,7 @@
 #define ALGORITMO_EVOLUTIVO_H
 #include <vector>
 #include "TIndividuo.h"
+#include "DataPackage.h"
 #include "eda/TAula.h"
 #include "eda/TProfesor.h"
 #include "eda/TAsignatura.h"
@@ -28,6 +29,7 @@ class AlgoritmoEvolutivo {
 	public:
 		AlgoritmoEvolutivo(unsigned);
 		AlgoritmoEvolutivo(unsigned, unsigned, float, float);
+
 		void Run(void);
 		void Seleccion(void);
 		void Evaluacion(void);
@@ -35,6 +37,9 @@ class AlgoritmoEvolutivo {
 		void Reproduccion(void);
 		void Mutacion(void);
 		void Log(void);
+
+		void AmarrarDP(DataPackage *pDP);
+
 };
 
 

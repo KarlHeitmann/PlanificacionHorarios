@@ -55,9 +55,12 @@ std::vector<TIndividuo *> *AlgoritmoEvolutivo::InitPob(){
 	
 	CandidatoHorario *pCH;
 	//Genera poblacion inicial
+	//std::cout << "____Poblacion_INICIAL___\n";
 	for (unsigned i=0; i<uintPoblacion; i++) {
 		pCH=new CandidatoHorario;
 		pCH->GenerarGenotipo(pvAulas, pvProfesores, pvAsignaturas);
+		//std::cout << "Individuo " << i << " | Adaptacion: " << pCH->GetAdaptacion() << "\n";
+
 		//std::cout << "__________________________\nIndividuo: " << i <<"\nAdaptacion: " << pCH->floatAdaptacion << "\n";
 		floatSumAdaptacion += pCH->GetAdaptacion();
 		//Se trata de un problema de minimizacion: la adaptacion mas baja es la
@@ -111,6 +114,7 @@ void AlgoritmoEvolutivo::Seleccion () {
 	vPobAux.reserve(uintPoblacion);
 	//std::cout << "______SELECCION______\n";
 	for (unsigned i=0; i<uintPoblacion; i++) {
+		//std::cout << "Individuo " << i << " | Adaptacion: " << (*pvPoblacion)[i]->GetAdaptacion() << "\n";
 		floatProb = RND;
 		uintEscogido=0;
 		while ((floatProb > (*pvPoblacion)[uintEscogido]->GetPuntAcum()) 
@@ -224,3 +228,9 @@ void AlgoritmoEvolutivo::Log() {
 	//std::cout << "Adap mejor: " << floatAdapMejor <<"\nPosicion mejor: " << uintPosMejor << "\n";
 	std::cout << "**************************\n"; 
 }
+
+void AlgoritmoEvolutivo::AmarrarDP (DataPackage *pDP) {
+	pDP->AjustarPoblacion(pvPoblacion);
+
+}
+
