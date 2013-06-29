@@ -229,3 +229,8 @@ void AlgoritmoEvolutivo::EvaluacionFast () {
 	}
 #endif	
 }
+void AlgoritmoEvolutivo::Log() {
+	std::cout << "floatSumAdaptacion: " << floatSumAdaptacion << "\n";
+	//std::cout << "Adap mejor: " << floatAdapMejor <<"\nPosicion mejor: " << uintPosMejor << "\n";
+	std::cout << "**************************\n"; 
+}

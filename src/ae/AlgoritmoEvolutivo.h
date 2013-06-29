@@ -34,6 +34,7 @@ class AlgoritmoEvolutivo {
 		void EvaluacionFast(void);
 		void Reproduccion(void);
 		void Mutacion(void);
+		void Log(void);
 };
 
 
