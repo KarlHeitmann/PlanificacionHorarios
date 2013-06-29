@@ -9,14 +9,30 @@
 class AlgoritmoEvolutivo {
 	private:
 		unsigned uintPoblacion;
+		unsigned uintNGeneraciones;
+		unsigned uintPosMejor;
+		float floatAdapMejor;
+		float floatSumAdaptacion;
+		float floatProbabilidaDeCruce;
+		float floatTasaDeMutacion;
+
+		unsigned uintLargoCromosoma;
 		GeneradorDatos DataGen;
-		std::vector<TIndividuo> *pvIndividuos;
+		std::vector<TIndividuo *> *pvIndividuos;
 		std::vector<TAula> *pvAulas;
 		std::vector<TAsignatura> * pvAsignaturas;
 		std::vector<TProfesor> * pvProfesores;
+
+		//Metodos privados
+		std::vector<TIndividuo *> *InitPob(void);
 	public:
 		AlgoritmoEvolutivo(unsigned);
+		AlgoritmoEvolutivo(unsigned, unsigned, float, float);
 		void Run(void);
+		void Seleccion(std::vector<TIndividuo *> *pvPoblacion);
+		void Evaluacion(std::vector<TIndividuo *> *pvPoblacion);
+		void Reproduccion(std::vector<TIndividuo *> *pvPoblacion);
+		void Mutacion(std::vector<TIndividuo *> *pvPoblacion);
 };
 
 
