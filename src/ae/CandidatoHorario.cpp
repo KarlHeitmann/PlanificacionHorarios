@@ -10,7 +10,8 @@
 #define IND_VERBOSE 1
 #define RND (float)rand()/(float)RAND_MAX
 CandidatoHorario::CandidatoHorario():TIndividuo() {
-	srand(time(NULL));	
+	//srand(time(NULL));	
+	;
 }
 
 void CandidatoHorario::ActualizarAdaptacion() {

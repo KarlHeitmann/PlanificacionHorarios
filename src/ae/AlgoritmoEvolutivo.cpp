@@ -14,7 +14,7 @@
 #define RND (float)rand()/(float)RAND_MAX
 AlgoritmoEvolutivo::AlgoritmoEvolutivo(unsigned _uintPoblacion, unsigned _uintNGeneraciones, float _floatProbabilidaDeCruce,
 		float _floatTasaDeMutacion) {
-	srand(time(NULL));
+	//srand(time(NULL));
 	GeneradorDatos DataGen;
 	pvAulas = DataGen.VectorTAula();
 	pvAsignaturas = DataGen.VectorTAsignatura();

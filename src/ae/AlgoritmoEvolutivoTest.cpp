@@ -1,8 +1,15 @@
-#include <AlgoritmoEvolutivo.h>
+#include <time.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <iostream>
+#include "AlgoritmoEvolutivo.h"
+#include "DataPackage.h"
 
 
 int main (int argc, char **argv) {
+	
 	DataPackage DP;
+	srand(time(NULL));
 	//                    TamPob, N_Generaciones, ProbDeCruce
 	AlgoritmoEvolutivo AE(10, 9, 0.5, 0.01);
 	//AE.Run();

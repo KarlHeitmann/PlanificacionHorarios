@@ -1,3 +1,6 @@
+#include <time.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include <string>
 #include <vector>
 #include <iostream>
@@ -9,6 +12,7 @@ int main (int argc, char **argv) {
 	TCostHoraProf *pCostHoraProf;
 	
 	std::string strTemp="";
+	srand(time(NULL));
 
 	TCostAsigProf *pCostAsigProf;
 	pCostAsigProf=new TCostAsigProf(69);	

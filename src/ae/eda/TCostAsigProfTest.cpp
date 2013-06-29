@@ -1,3 +1,6 @@
+#include <time.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include "TCostAsigProf.h"
 #include "TCostHoraProf.h"
 #include <vector>
@@ -10,6 +13,7 @@ int main (int argc, char *argv[]) {
 	TCostAsigProf CostAsigProf(69);
 	std::string strTemp="";
 
+	srand(time(NULL));
 	for (int i=0; i<argc; i++) {
 		//LCostAsigProf.push_back( TCostAsigProf(i*5) );
 		strTemp=argv[i];//+"   |";

@@ -1,3 +1,6 @@
+#include <time.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include <iostream>
 #include "TCostHoraProf.h"
 #include <vector>
@@ -8,6 +11,7 @@ int main (int argc, char **argv) {
 	std::vector<TCostHoraProf> LCostHoraProf;
 	const char *pchrtemp[argc];
 	std::string strTemp[argc];
+	srand(time(NULL));
 	for (int i=0; i< argc; i++) {
 		LCostHoraProf.push_back( TCostHoraProf(argv[i], i) );
 	}
