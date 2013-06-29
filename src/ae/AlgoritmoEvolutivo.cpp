@@ -75,7 +75,7 @@ void AlgoritmoEvolutivo::Run() {
 	std::cout << "Adap mejor: " << floatAdapMejor <<"\nPosicion mejor: " << uintPosMejor << "\n";
 	//Entra al loop de evolucion
 	//Evaluacion
-	Evaluacion(pvIndividuos);
+	EvaluacionFast(pvIndividuos);
 	for (unsigned i=0; i<uintNGeneraciones; i++) {
 		//Seleccion (Pob, paramentros) 
 		//Selecciona a los supervivientes de la poblacion
@@ -95,6 +95,10 @@ void AlgoritmoEvolutivo::Run() {
 		Seleccion(pvIndividuos);
 		Reproduccion(pvIndividuos);
 		Mutacion(pvIndividuos);
+		Evaluacion(pvIndividuos);
+		std::cout << "floatSumAdaptacion: " << floatSumAdaptacion << "\n";
+		//std::cout << "Adap mejor: " << floatAdapMejor <<"\nPosicion mejor: " << uintPosMejor << "\n";
+		std::cout << "**************************\n";
 	}
 	
 }
@@ -179,6 +183,31 @@ void AlgoritmoEvolutivo::Mutacion (std::vector<TIndividuo *> *pvPoblacion) {
 }
 
 void AlgoritmoEvolutivo::Evaluacion (std::vector<TIndividuo *> *pvPoblacion) {
+	TIndividuo *pCH;
+	float floatPuntAcu=0.0;
+	float floatPuntuacion;
+	floatSumAdaptacion=0.0;
+	for (unsigned i=0; i<uintPoblacion; i++) {
+		floatSumAdaptacion+=(*pvPoblacion)[i]->GetAdaptacion();
+	}
+	for (unsigned i=0; i<uintPoblacion; i++) {
+		pCH = (*pvPoblacion)[i];
+		floatPuntuacion = pCH->GetAdaptacion() / floatSumAdaptacion;
+		floatPuntAcu += floatPuntuacion;
+		pCH->SetPuntuacionAcumulada(floatPuntAcu);
+		pCH->SetPuntuacion(floatPuntuacion);
+	}
+#if 0
+	for (unsigned i=0; i<uintPoblacion; i++) {
+		pCH = &(*pvPoblacion)[i];
+		std::cout << "________________\nIndividuo " << i 
+			<< "\nAdaptacion: " << pCH->GetAdaptacion() 
+			<< "\nPuntuacion: " << pCH->GetPuntuacion() 
+			<< "\nPuntuacion Acumulada: " << pCH->GetPuntAcum() <<  "\n";
+	}
+#endif	
+}
+void AlgoritmoEvolutivo::EvaluacionFast (std::vector<TIndividuo *> *pvPoblacion) {
 	TIndividuo *pCH;
 	float floatPuntAcu=0.0;
 	float floatPuntuacion;

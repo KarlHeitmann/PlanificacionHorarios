@@ -31,6 +31,7 @@ class AlgoritmoEvolutivo {
 		void Run(void);
 		void Seleccion(std::vector<TIndividuo *> *pvPoblacion);
 		void Evaluacion(std::vector<TIndividuo *> *pvPoblacion);
+		void EvaluacionFast(std::vector<TIndividuo *> *pvPoblacion);
 		void Reproduccion(std::vector<TIndividuo *> *pvPoblacion);
 		void Mutacion(std::vector<TIndividuo *> *pvPoblacion);
 };

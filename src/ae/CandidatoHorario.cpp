@@ -116,7 +116,7 @@ void CandidatoHorario::Mutar(float floatTasaDeMutacion, std::vector<TAula> *pvAu
 		//floatRollDice=(unsigned) rand() % Cromosoma.size();
 		floatRollDice=RND;
 		if (floatRollDice <= floatTasaDeMutacion) {
-			std::cout << "Adaptacion antes de mutar: " << floatAdaptacion <<"\n";
+			//std::cout << "Adaptacion antes de mutar: " << floatAdaptacion <<"\n";
 			uintPosProf = (unsigned) (*pvAsignaturas)[i].GetPosProf();
 			intCodAsig = (*pvAsignaturas)[i].GetCodigo();
 			uintPosAsig = (*pvProfesores)[uintPosProf].FindAsigPos(intCodAsig);
@@ -125,8 +125,8 @@ void CandidatoHorario::Mutar(float floatTasaDeMutacion, std::vector<TAula> *pvAu
 			Cromosoma[i]=*pGen;
 			delete pGen;
 			ActualizarAdaptacion();
-			std::cout << "Muto!\n"; 
-			std::cout << "Adaptacion despues de mutar: " << floatAdaptacion <<"\n>>>>>>><<<<<<<\n";
+			//std::cout << "Muto!\n"; 
+			//std::cout << "Adaptacion despues de mutar: " << floatAdaptacion <<"\n>>>>>>><<<<<<<\n";
 			break;
 		}
 	}
