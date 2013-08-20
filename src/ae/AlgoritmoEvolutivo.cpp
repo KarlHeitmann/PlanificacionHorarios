@@ -117,7 +117,7 @@ void AlgoritmoEvolutivo::Seleccion () {
 		//std::cout << "Individuo " << i << " | Adaptacion: " << (*pvPoblacion)[i]->GetAdaptacion() << "\n";
 		floatProb = RND;
 		uintEscogido=0;
-		while ((floatProb > (*pvPoblacion)[uintEscogido]->GetPuntAcum()) 
+		while ((floatProb < (*pvPoblacion)[uintEscogido]->GetPuntAcum()) 
 				&& (uintEscogido < (uintPoblacion-1)))
 			uintEscogido++;
 		uintSelSuper[i]=uintEscogido;
@@ -230,7 +230,7 @@ void AlgoritmoEvolutivo::Log() {
 }
 
 void AlgoritmoEvolutivo::AmarrarDP (DataPackage *pDP) {
-	pDP->AjustarPoblacion(pvPoblacion);
-
+	//pDP->AjustarPoblacion(pvPoblacion);
+	pDP->AjustarPoblacion(pvPoblacion, &floatSumAdaptacion);
 }
 

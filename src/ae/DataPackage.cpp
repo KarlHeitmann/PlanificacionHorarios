@@ -8,4 +8,6 @@ void DataPackage::Individuos() {
 		std::cout << "Individuo " << i << " | Adaptacion: " << (*pvPoblacion)[i]->GetAdaptacion() << "\n";
 	}
 }
-
+void DataPackage::SumAdaptacion() {
+	std::cout << "Suma Adaptacion: " << *floatSumAdaptacion <<"\n";
+}

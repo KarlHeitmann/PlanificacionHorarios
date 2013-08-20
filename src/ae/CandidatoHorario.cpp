@@ -7,7 +7,7 @@
 #include "CandidatoHorario.h"
 #include "TGen.h"
 #include "eda/TCostHoraProf.h"
-#define IND_VERBOSE 1
+#define IND_VERBOSE 0
 #define RND (float)rand()/(float)RAND_MAX
 CandidatoHorario::CandidatoHorario():TIndividuo() {
 	//srand(time(NULL));	
