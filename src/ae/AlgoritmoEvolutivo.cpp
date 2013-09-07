@@ -112,24 +112,41 @@ void AlgoritmoEvolutivo::Seleccion () {
 	unsigned uintEscogido;
 	float floatProb;
 	vPobAux.reserve(uintPoblacion);
-	//std::cout << "______SELECCION______\n";
+#if 0
+	std::cout << "______SELECCION______\n";
+#endif
 	for (unsigned i=0; i<uintPoblacion; i++) {
-		//std::cout << "Individuo " << i << " | Adaptacion: " << (*pvPoblacion)[i]->GetAdaptacion() << "\n";
 		floatProb = RND;
 		uintEscogido=0;
-		while ((floatProb < (*pvPoblacion)[uintEscogido]->GetPuntAcum()) 
-				&& (uintEscogido < (uintPoblacion-1)))
+#if 0
+		std::cout << "Individuo " << i << " | Adaptacion: " << (*pvPoblacion)[i]->GetAdaptacion() << "\n";
+		std::cout << "floatProb: " << floatProb << "\n";
+		std::cout << "(*pvPoblacion)[uintEscogido]->GetPuntAcum(): " << (*pvPoblacion)[uintEscogido]->GetPuntAcum() << "\n";
+#endif
+		while ((floatProb > (*pvPoblacion)[uintEscogido]->GetPuntAcum()) 
+				&& (uintEscogido < (uintPoblacion-1))) {
+#if 0
+			std::cout << "(*pvPoblacion)[uintEscogido]->GetPuntAcum(): " << (*pvPoblacion)[uintEscogido]->GetPuntAcum() << "\n";
+#endif
 			uintEscogido++;
+		}
 		uintSelSuper[i]=uintEscogido;
-		//std::cout << "Individuo " << i <<" | Score: " << (*pvPoblacion)[i].GetPuntuacion() <<
-		//	" | Seleccionado: " << uintEscogido << "\n";
+#if 0
+		std::cout << "uintEscogido: " << uintEscogido << "\n";
+		std::cout << "Individuo " << i <<" | Score: " << (*pvPoblacion)[i]->GetPuntuacion() <<
+			" | Seleccionado: " << uintEscogido << "\n";
+#endif
 	}
 	for (unsigned i=0; i< uintPoblacion; i++) {
 		vPobAux[i]=(*pvPoblacion)[uintSelSuper[i]];
 	}
 	for (unsigned i=0; i< uintPoblacion; i++) {
 		(*pvPoblacion)[i]=vPobAux[i];
-		//std::cout << "Individuo " << i <<" | Score: " << (*pvPoblacion)[i].GetPuntuacion() << "\n";
+#if 0
+		std::cout << "Individuo " << i <<" | Score: " << (*pvPoblacion)[i]->GetPuntuacion() <<
+		   " | Adaptacion: " << (*pvPoblacion)[i]->GetAdaptacion() << "\n";
+		
+#endif
 	}
 }
 void AlgoritmoEvolutivo::Reproduccion () {

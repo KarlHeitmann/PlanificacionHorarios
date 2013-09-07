@@ -14,8 +14,8 @@ int main (int argc, char **argv) {
 	AlgoritmoEvolutivo AE(10, 9, 0.5, 0.01);
 	//AE.Run();
 	AE.AmarrarDP(&DP);
-	for (unsigned i=0; i<2; i++) {
-		std::cout << "<<<< Generacion " << i << " >>>>\n";
+	for (unsigned i=0; i<5; i++) {
+		std::cout << "\n<<<< Generacion " << i << " >>>>\n";
 #if 1
 		std::cout << "--->Antes de seleccion\n";
 		DP.Individuos();
@@ -23,6 +23,10 @@ int main (int argc, char **argv) {
 #endif
 		//AE.Log();
 		AE.Seleccion();
+#if 0
+		std::cout << "<---Despues de seleccion\n";
+		DP.Individuos();
+#endif
 		AE.Reproduccion();
 		AE.Mutacion();
 		AE.Evaluacion();
