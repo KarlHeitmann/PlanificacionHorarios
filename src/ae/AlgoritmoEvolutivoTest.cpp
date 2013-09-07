@@ -19,6 +19,7 @@ int main (int argc, char **argv) {
 #if 1
 		std::cout << "--->Antes de seleccion\n";
 		DP.Individuos();
+		std::cout << DP;
 #endif
 		//AE.Log();
 		AE.Seleccion();
@@ -28,7 +29,7 @@ int main (int argc, char **argv) {
 #if 1
 		std::cout << "<---Despues de seleccion\n";
 		DP.Individuos();
-		DP.SumAdaptacion();
+		std::cout << DP;
 #endif
 	}
 	//AE.Log();
