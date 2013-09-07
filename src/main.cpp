@@ -15,6 +15,7 @@ static int callback(void *NotUsed, int argc, char **argv, char **azColName){
 #include "interfaz/CMainWindow.h"
 int main(int argc, char **argv)
 {	
+#if 0
 	sqlite3 *db;
 	char *zErrMsg = 0;
 	int rc;
@@ -37,6 +38,7 @@ int main(int argc, char **argv)
 	}
 	sqlite3_close(db);
 	return 0;
+#endif
 #if 0
 	initscr();			/* Start curses mode 		  */
 	printw("Hello World !!!");	/* Print Hello World		  */
@@ -46,7 +48,7 @@ int main(int argc, char **argv)
 
 	return 0;
 #endif
-#if 0
+#if 1
 	CMainWindow win;
 	win.Welcome();
 #endif
