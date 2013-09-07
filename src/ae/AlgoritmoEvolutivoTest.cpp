@@ -15,8 +15,8 @@ int main (int argc, char **argv) {
 	//AE.Run();
 	AE.AmarrarDP(&DP);
 	for (unsigned i=0; i<5; i++) {
-		std::cout << "\n<<<< Generacion " << i << " >>>>\n";
-#if 1
+		//std::cout << "\n<<<< Generacion " << i << " >>>>\n";
+#if 0
 		std::cout << "--->Antes de seleccion\n";
 		DP.Individuos();
 		std::cout << DP;
@@ -30,7 +30,7 @@ int main (int argc, char **argv) {
 		AE.Reproduccion();
 		AE.Mutacion();
 		AE.Evaluacion();
-#if 1
+#if 0
 		std::cout << "<---Despues de seleccion\n";
 		DP.Individuos();
 		std::cout << DP;
