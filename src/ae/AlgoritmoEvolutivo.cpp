@@ -14,7 +14,7 @@
 #define RND (float)rand()/(float)RAND_MAX
 AlgoritmoEvolutivo::AlgoritmoEvolutivo(unsigned _uintPoblacion, unsigned _uintNGeneraciones, float _floatProbabilidaDeCruce,
 		float _floatTasaDeMutacion) {
-	srand(time(NULL));
+	//srand(time(NULL));
 	GeneradorDatos DataGen;
 	pvAulas = DataGen.VectorTAula();
 	pvAsignaturas = DataGen.VectorTAsignatura();
@@ -55,9 +55,12 @@ std::vector<TIndividuo *> *AlgoritmoEvolutivo::InitPob(){
 	
 	CandidatoHorario *pCH;
 	//Genera poblacion inicial
+	//std::cout << "____Poblacion_INICIAL___\n";
 	for (unsigned i=0; i<uintPoblacion; i++) {
 		pCH=new CandidatoHorario;
 		pCH->GenerarGenotipo(pvAulas, pvProfesores, pvAsignaturas);
+		//std::cout << "Individuo " << i << " | Adaptacion: " << pCH->GetAdaptacion() << "\n";
+
 		//std::cout << "__________________________\nIndividuo: " << i <<"\nAdaptacion: " << pCH->floatAdaptacion << "\n";
 		floatSumAdaptacion += pCH->GetAdaptacion();
 		//Se trata de un problema de minimizacion: la adaptacion mas baja es la
@@ -109,23 +112,41 @@ void AlgoritmoEvolutivo::Seleccion () {
 	unsigned uintEscogido;
 	float floatProb;
 	vPobAux.reserve(uintPoblacion);
-	//std::cout << "______SELECCION______\n";
+#if 0
+	std::cout << "______SELECCION______\n";
+#endif
 	for (unsigned i=0; i<uintPoblacion; i++) {
 		floatProb = RND;
 		uintEscogido=0;
+#if 0
+		std::cout << "Individuo " << i << " | Adaptacion: " << (*pvPoblacion)[i]->GetAdaptacion() << "\n";
+		std::cout << "floatProb: " << floatProb << "\n";
+		std::cout << "(*pvPoblacion)[uintEscogido]->GetPuntAcum(): " << (*pvPoblacion)[uintEscogido]->GetPuntAcum() << "\n";
+#endif
 		while ((floatProb > (*pvPoblacion)[uintEscogido]->GetPuntAcum()) 
-				&& (uintEscogido < (uintPoblacion-1)))
+				&& (uintEscogido < (uintPoblacion-1))) {
+#if 0
+			std::cout << "(*pvPoblacion)[uintEscogido]->GetPuntAcum(): " << (*pvPoblacion)[uintEscogido]->GetPuntAcum() << "\n";
+#endif
 			uintEscogido++;
+		}
 		uintSelSuper[i]=uintEscogido;
-		//std::cout << "Individuo " << i <<" | Score: " << (*pvPoblacion)[i].GetPuntuacion() <<
-		//	" | Seleccionado: " << uintEscogido << "\n";
+#if 0
+		std::cout << "uintEscogido: " << uintEscogido << "\n";
+		std::cout << "Individuo " << i <<" | Score: " << (*pvPoblacion)[i]->GetPuntuacion() <<
+			" | Seleccionado: " << uintEscogido << "\n";
+#endif
 	}
 	for (unsigned i=0; i< uintPoblacion; i++) {
 		vPobAux[i]=(*pvPoblacion)[uintSelSuper[i]];
 	}
 	for (unsigned i=0; i< uintPoblacion; i++) {
 		(*pvPoblacion)[i]=vPobAux[i];
-		//std::cout << "Individuo " << i <<" | Score: " << (*pvPoblacion)[i].GetPuntuacion() << "\n";
+#if 0
+		std::cout << "Individuo " << i <<" | Score: " << (*pvPoblacion)[i]->GetPuntuacion() <<
+		   " | Adaptacion: " << (*pvPoblacion)[i]->GetAdaptacion() << "\n";
+		
+#endif
 	}
 }
 void AlgoritmoEvolutivo::Reproduccion () {
@@ -224,3 +245,9 @@ void AlgoritmoEvolutivo::Log() {
 	//std::cout << "Adap mejor: " << floatAdapMejor <<"\nPosicion mejor: " << uintPosMejor << "\n";
 	std::cout << "**************************\n"; 
 }
+
+void AlgoritmoEvolutivo::AmarrarDP (DataPackage *pDP) {
+	//pDP->AjustarPoblacion(pvPoblacion);
+	pDP->AjustarPoblacion(pvPoblacion, &floatSumAdaptacion);
+}
+

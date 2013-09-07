@@ -8,7 +8,7 @@ add_executable(TIndividuoTest CandidatoHorario.cpp TIndividuo.cpp
 
 add_executable(AlgoritmoEvolutivoTest AlgoritmoEvolutivoTest.cpp
 	AlgoritmoEvolutivo.cpp CandidatoHorario.cpp TIndividuo.cpp 
-	TGen.cpp GeneradorDatos.cpp)
+	TGen.cpp GeneradorDatos.cpp DataPackage.cpp)
 
 target_link_libraries(TIndividuoTest AEDataStructure)
 target_link_libraries(AlgoritmoEvolutivoTest AEDataStructure)
