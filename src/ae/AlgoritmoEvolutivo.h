@@ -2,6 +2,7 @@
 #define ALGORITMO_EVOLUTIVO_H
 #include <vector>
 #include "TIndividuo.h"
+#include "DataPackage.h"
 #include "eda/TAula.h"
 #include "eda/TProfesor.h"
 #include "eda/TAsignatura.h"
@@ -18,7 +19,7 @@ class AlgoritmoEvolutivo {
 
 		unsigned uintLargoCromosoma;
 		GeneradorDatos DataGen;
-		std::vector<TIndividuo *> *pvIndividuos;
+		std::vector<TIndividuo *> *pvPoblacion;
 		std::vector<TAula> *pvAulas;
 		std::vector<TAsignatura> * pvAsignaturas;
 		std::vector<TProfesor> * pvProfesores;
@@ -28,11 +29,17 @@ class AlgoritmoEvolutivo {
 	public:
 		AlgoritmoEvolutivo(unsigned);
 		AlgoritmoEvolutivo(unsigned, unsigned, float, float);
+
 		void Run(void);
-		void Seleccion(std::vector<TIndividuo *> *pvPoblacion);
-		void Evaluacion(std::vector<TIndividuo *> *pvPoblacion);
-		void Reproduccion(std::vector<TIndividuo *> *pvPoblacion);
-		void Mutacion(std::vector<TIndividuo *> *pvPoblacion);
+		void Seleccion(void);
+		void Evaluacion(void);
+		void EvaluacionFast(void);
+		void Reproduccion(void);
+		void Mutacion(void);
+		void Log(void);
+
+		void AmarrarDP(DataPackage *pDP);
+
 };
 
 
