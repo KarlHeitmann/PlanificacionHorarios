@@ -1,7 +1,42 @@
-#include <ncurses.h>
+//#include <ncurses.h>
+#include <sqlite3.h>
+
+#include <stdio.h>
+     
+static int callback(void *NotUsed, int argc, char **argv, char **azColName){
+	int i;
+	for(i=0; i<argc; i++){
+		printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+	}
+	printf("\n");
+	return 0;
+}
+      
 #include "interfaz/CMainWindow.h"
-int main()
+int main(int argc, char **argv)
 {	
+	sqlite3 *db;
+	char *zErrMsg = 0;
+	int rc;
+     printf(argv[2]); 
+	if( argc!=3 ){
+		//printf(stderr, "Usage: %s DATABASE SQL-STATEMENT\n", argv[0]);
+		printf("Usage: %s DATABASE SQL-STATEMENT\n", argv[0]);
+		return(1);
+	}
+	rc = sqlite3_open(argv[1], &db);
+	if( rc ){
+		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+		sqlite3_close(db);
+		return(1);
+	}
+	rc = sqlite3_exec(db, argv[2], callback, 0, &zErrMsg);
+	if( rc!=SQLITE_OK ){
+		fprintf(stderr, "SQL error: %s\n", zErrMsg);
+		sqlite3_free(zErrMsg);
+	}
+	sqlite3_close(db);
+	return 0;
 #if 0
 	initscr();			/* Start curses mode 		  */
 	printw("Hello World !!!");	/* Print Hello World		  */
@@ -11,9 +46,10 @@ int main()
 
 	return 0;
 #endif
-
+#if 0
 	CMainWindow win;
 	win.Welcome();
+#endif
 }
  
 
