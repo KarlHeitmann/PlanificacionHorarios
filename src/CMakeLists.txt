@@ -10,7 +10,7 @@ include_directories("${PROJECT_SOURCE_DIR}/ae" "${PROJECT_SOURCE_DIR}/interfaz")
 add_subdirectory(ae)
 
 add_executable(main main.cpp)
-add_library(TUI STATIC CMainWindow.cpp)
+add_library(TUI STATIC CMainWindow.cpp CAdminWindow.cpp)
 target_link_libraries(main TUI)
 target_link_libraries(main general ncurses sqlite3)
 #set (EXTRA_LIBS ${EXTRA_LIBS} interfaz)

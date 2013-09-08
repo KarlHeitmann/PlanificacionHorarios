@@ -3,7 +3,8 @@
 
 #include <stdio.h>
 #include "CMainWindow.h"
-     
+#define TEST_SQLITE3 0
+#if TEST_SQLITE3 > 0
 static int callback(void *NotUsed, int argc, char **argv, char **azColName){
 	int i;
 	for(i=0; i<argc; i++){
@@ -12,10 +13,11 @@ static int callback(void *NotUsed, int argc, char **argv, char **azColName){
 	printf("\n");
 	return 0;
 }
+#endif
       
 int main(int argc, char **argv)
 {	
-#if 0
+#if TEST_SQLITE3 > 0
 	sqlite3 *db;
 	char *zErrMsg = 0;
 	int rc;
