@@ -33,17 +33,17 @@ void CAdminWindow::PedirParametros () {
 	move(3, 1+24);
 	getstr(chrTemp); strTemp=chrTemp;
 	uintPoblacion = FromString<uint> (strTemp);
-/*
+
 	move(4, 1+24);
 	getstr(chrTemp); strTemp=chrTemp; 
-	uintNGeneraciones = fromstring<uint> (strTemp);
+	uintNGeneraciones = FromString<uint> (strTemp);
 	move(5, 1+24);
 	getstr(chrTemp); strTemp=chrTemp; 
-	floatProbabilidaDeCruce = fromstring<float> (strTemp);
+	floatProbabilidaDeCruce = FromString<float> (strTemp);
 	move(6, 1+24);
 	getstr(chrTemp); strTemp=chrTemp;
-   	floatTasaDeMutacion = fromstring<float> (strTemp);
-*/
+   	floatTasaDeMutacion = FromString<float> (strTemp);
+
 #else
 	uintPoblacion = 10
 	move(4, 1+24);
