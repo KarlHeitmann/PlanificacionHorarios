@@ -50,7 +50,7 @@ int main(int argc, char **argv)
 #endif
 #if 1
 	CMainWindow win;
-	win.Welcome();
+	win.MainMenu();
 #endif
 }
  

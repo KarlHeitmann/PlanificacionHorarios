@@ -5,7 +5,7 @@ class CMainWindow {
 	public:
 		CMainWindow();
 
-		void Welcome(void );
+		void MainMenu(void );
 	private:
 		int max_row, max_col;
 		std::string Account;
