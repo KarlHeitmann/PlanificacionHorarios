@@ -5,33 +5,11 @@
 #include "CUserWindow.h"
 #include "CAdminWindow.h"
 #include "CMainWindow.h"
+#include "Misc.h"
+
 #define PEDIR_PARAMETROS_ENABLE 1
 #define HALF_ROW max_row / 2
 #define HALF_COL max_col / 2
-
-#include <sstream>
- 
-//using namespace std;
- 
-template <class T>
-T fromstring ( std::string s )
-{
-	T result;
-	std::stringstream str;
-	str << s;
-	str >> result;
-	return result;
-}
- 
-template <class T>
-std::string tostring ( T d )
-{
-	std::string s;
-	std::stringstream str;
-	str << d;
-	str >> s;
-	return s;
-}
 
 CAdminWindow::CAdminWindow (CMainWindow * _pMW, int r, int c)  {
 	pMW = _pMW;
@@ -44,6 +22,7 @@ void CAdminWindow::PedirParametros () {
 	std::string strTemp;
 	unsigned uintPoblacion, uintNGeneraciones;
 	float floatProbabilidaDeCruce, floatTasaDeMutacion;
+	Misc mi;
 	clear();
 #if PEDIR_PARAMETROS_ENABLE > 0
 	mvprintw(1, 2, "Definicion de parámetros para el algoritmo");
@@ -54,8 +33,8 @@ void CAdminWindow::PedirParametros () {
 	//TODO Usar restricciones (Pedir a usuario que ingrese parámetros válidos)
 	move(3, 1+24);
 	getstr(chrTemp); strTemp=chrTemp;
-	uintPoblacion = fromstring<uint> (strTemp);
-
+	uintPoblacion = mi.FromString<uint> (strTemp);
+/*
 	move(4, 1+24);
 	getstr(chrTemp); strTemp=chrTemp; 
 	uintNGeneraciones = fromstring<uint> (strTemp);
@@ -65,7 +44,7 @@ void CAdminWindow::PedirParametros () {
 	move(6, 1+24);
 	getstr(chrTemp); strTemp=chrTemp;
    	floatTasaDeMutacion = fromstring<float> (strTemp);
-
+*/
 #else
 	uintPoblacion = 10
 	move(4, 1+24);

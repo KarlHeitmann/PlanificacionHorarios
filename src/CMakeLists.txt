@@ -9,7 +9,7 @@ SET(CMAKE_COLOR_MAKEFILE ON)
 include_directories("${PROJECT_SOURCE_DIR}/ae" "${PROJECT_SOURCE_DIR}/interfaz")
 add_subdirectory(ae)
 
-add_executable(main main.cpp CAdminWindow.cpp CMainWindow.cpp)
+add_executable(main main.cpp CAdminWindow.cpp CMainWindow.cpp Misc.cpp)
 #add_library(TUI STATIC CMainWindow.cpp)
 #target_link_libraries(main TUI AE AEDataStructure)
 target_link_libraries(main AE AEDataStructure)
