@@ -54,8 +54,8 @@ void CAdminWindow::PedirParametros () {
 	floatTasaDeMutacion = 0.01
 #endif
 	
-	
-	
+	strTemp = ToString(floatTasaDeMutacion);
+	mvprintw(8, 5, strTemp.c_str());
 	pAE = new AlgoritmoEvolutivo(uintPoblacion, uintNGeneraciones, floatProbabilidaDeCruce, floatTasaDeMutacion);
 
 	getch();
