@@ -1,3 +1,6 @@
+#include <time.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include <iostream>
 #include <vector>
 #include "TIndividuo.h"
@@ -18,6 +21,7 @@
 
 
 int main (int argc, char **argv) {
+	srand(time(NULL));
 #if TINDIVIDUO_SIMPLE > 0
 	TIndividuo Individuo(5.5, 2.5, 3.0);
 	//std::cout << TIndividuo.Display();
