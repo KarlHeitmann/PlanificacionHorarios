@@ -1,8 +1,12 @@
 //#include <ncurses.h>
 #include <sqlite3.h>
+#include <time.h>
+#include <stdlib.h>
+//#include <stdio.h>
 
 #include <stdio.h>
 #include "CMainWindow.h"
+#include "ae/AlgoritmoEvolutivo.h"
 #define TEST_SQLITE3 0
 #if TEST_SQLITE3 > 0
 static int callback(void *NotUsed, int argc, char **argv, char **azColName){
@@ -18,6 +22,9 @@ static int callback(void *NotUsed, int argc, char **argv, char **azColName){
 int main(int argc, char **argv)
 {	
 	CUserWindow * pUW;
+	AlgoritmoEvolutivo pAE(10, 9, 0.5, 0.01);
+	DataPackage DP;
+	CMainWindow win;
 #if TEST_SQLITE3 > 0
 	sqlite3 *db;
 	char *zErrMsg = 0;
@@ -52,9 +59,10 @@ int main(int argc, char **argv)
 	return 0;
 #endif
 #if 1
-	CMainWindow win;
+	srand(time(NULL));
 	pUW=win.MainMenu();
-	
+	//pAE=new AlgoritmoEvolutivo(10, 9, 0.5, 0.01);
+
 	win.Finish();
 #endif
 }

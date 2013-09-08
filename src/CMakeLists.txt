@@ -9,9 +9,9 @@ SET(CMAKE_COLOR_MAKEFILE ON)
 include_directories("${PROJECT_SOURCE_DIR}/ae" "${PROJECT_SOURCE_DIR}/interfaz")
 add_subdirectory(ae)
 
-add_executable(main main.cpp)
-add_library(TUI STATIC CMainWindow.cpp CAdminWindow.cpp)
-target_link_libraries(main TUI)
+add_executable(main main.cpp CAdminWindow)
+add_library(TUI STATIC CMainWindow.cpp)
+target_link_libraries(main TUI AE AEDataStructure)
 target_link_libraries(main general ncurses sqlite3)
 #set (EXTRA_LIBS ${EXTRA_LIBS} interfaz)
 
