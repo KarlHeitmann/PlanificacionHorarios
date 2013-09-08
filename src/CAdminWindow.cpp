@@ -4,6 +4,7 @@
 #include "ae/AlgoritmoEvolutivo.h"
 #include "CUserWindow.h"
 #include "CAdminWindow.h"
+#define PEDIR_PARAMETROS_ENABLE 1
 #define HALF_ROW max_row / 2
 #define HALF_COL max_col / 2
 CAdminWindow::CAdminWindow (int r, int c)  {
@@ -17,7 +18,7 @@ void CAdminWindow::PedirParametros () {
 	unsigned uintPoblacion, uintNGeneraciones;
 	float floatProbabilidaDeCruce, floatTasaDeMutacion;
 	clear();
-	
+#if PEDIR_PARAMETROS_ENABLE > 0
 	mvprintw(1, 2, "Definicion de parámetros para el algoritmo");
 	mvprintw(3, 1, "Tamaño de la población: ");
 	mvprintw(4, 1, "Número de Generaciones: ");
@@ -32,6 +33,19 @@ void CAdminWindow::PedirParametros () {
 	getstr(chrTemp); floatProbabilidaDeCruce = (float) atof(chrTemp);
 	move(6, 1+24);
 	getstr(chrTemp); floatTasaDeMutacion = (float) atof(chrTemp);
+#else
+	uintPoblacion = 10
+	move(4, 1+24);
+	uintNGeneraciones = 20
+	move(5, 1+24);
+	floatProbabilidaDeCruce = 0.5
+	move(6, 1+24);
+	floatTasaDeMutacion = 0.01
+#endif
+	
+	
+	
+	pAE = new AlgoritmoEvolutivo(uintPoblacion, uintNGeneraciones, floatProbabilidaDeCruce, floatTasaDeMutacion);
 
 	getch();
 }
