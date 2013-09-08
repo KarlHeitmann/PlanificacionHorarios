@@ -22,7 +22,6 @@ void CAdminWindow::PedirParametros () {
 	std::string strTemp;
 	unsigned uintPoblacion, uintNGeneraciones;
 	float floatProbabilidaDeCruce, floatTasaDeMutacion;
-	Misc mi;
 	clear();
 #if PEDIR_PARAMETROS_ENABLE > 0
 	mvprintw(1, 2, "Definicion de parámetros para el algoritmo");
@@ -33,7 +32,7 @@ void CAdminWindow::PedirParametros () {
 	//TODO Usar restricciones (Pedir a usuario que ingrese parámetros válidos)
 	move(3, 1+24);
 	getstr(chrTemp); strTemp=chrTemp;
-	uintPoblacion = mi.FromString<uint> (strTemp);
+	uintPoblacion = FromString<uint> (strTemp);
 /*
 	move(4, 1+24);
 	getstr(chrTemp); strTemp=chrTemp; 
