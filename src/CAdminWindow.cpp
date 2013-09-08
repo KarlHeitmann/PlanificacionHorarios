@@ -4,6 +4,7 @@
 #include "ae/AlgoritmoEvolutivo.h"
 #include "CUserWindow.h"
 #include "CAdminWindow.h"
+#include "CMainWindow.h"
 #define PEDIR_PARAMETROS_ENABLE 1
 #define HALF_ROW max_row / 2
 #define HALF_COL max_col / 2
@@ -32,7 +33,8 @@ std::string tostring ( T d )
 	return s;
 }
 
-CAdminWindow::CAdminWindow (int r, int c)  {
+CAdminWindow::CAdminWindow (CMainWindow * _pMW, int r, int c)  {
+	pMW = _pMW;
 	max_row=r;
 	max_col=c;
 }

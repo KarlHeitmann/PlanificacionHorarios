@@ -34,7 +34,7 @@ CUserWindow * CMainWindow :: MainMenu () {
 	std::string PasswordTmp;
 #if SKIP_AUT > 0
 	mvprintw(HALF_ROW, HALF_COL-7, "Bienvenido Jefe!");
-	pUW = new CAdminWindow(max_row, max_col);
+	pUW = new CAdminWindow(this, max_row, max_col);
 #else
 	mvprintw(HALF_ROW, HALF_COL-8, "Algoritmo Evolutivo.");
 	mvprintw(HALF_ROW+1, HALF_COL-11, "Planificación de Horarios.");
