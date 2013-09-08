@@ -2,6 +2,7 @@
 #include <sqlite3.h>
 
 #include <stdio.h>
+#include "CMainWindow.h"
      
 static int callback(void *NotUsed, int argc, char **argv, char **azColName){
 	int i;
@@ -12,7 +13,6 @@ static int callback(void *NotUsed, int argc, char **argv, char **azColName){
 	return 0;
 }
       
-#include "interfaz/CMainWindow.h"
 int main(int argc, char **argv)
 {	
 #if 0
