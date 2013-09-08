@@ -7,6 +7,31 @@
 #define PEDIR_PARAMETROS_ENABLE 1
 #define HALF_ROW max_row / 2
 #define HALF_COL max_col / 2
+
+#include <sstream>
+ 
+//using namespace std;
+ 
+template <class T>
+T fromstring ( std::string s )
+{
+	T result;
+	std::stringstream str;
+	str << s;
+	str >> result;
+	return result;
+}
+ 
+template <class T>
+std::string tostring ( T d )
+{
+	std::string s;
+	std::stringstream str;
+	str << d;
+	str >> s;
+	return s;
+}
+
 CAdminWindow::CAdminWindow (int r, int c)  {
 	max_row=r;
 	max_col=c;
@@ -26,13 +51,19 @@ void CAdminWindow::PedirParametros () {
 	mvprintw(6, 1, "Tasa de mutacion______: ");
 	//TODO Usar restricciones (Pedir a usuario que ingrese parámetros válidos)
 	move(3, 1+24);
-	getstr(chrTemp); uintPoblacion = (uint) atoi(chrTemp);
+	getstr(chrTemp); strTemp=chrTemp;
+	uintPoblacion = fromstring<uint> (strTemp);
+
 	move(4, 1+24);
-	getstr(chrTemp); uintNGeneraciones = (uint) atoi(chrTemp);
+	getstr(chrTemp); strTemp=chrTemp; 
+	uintNGeneraciones = fromstring<uint> (strTemp);
 	move(5, 1+24);
-	getstr(chrTemp); floatProbabilidaDeCruce = (float) atof(chrTemp);
+	getstr(chrTemp); strTemp=chrTemp; 
+	floatProbabilidaDeCruce = fromstring<float> (strTemp);
 	move(6, 1+24);
-	getstr(chrTemp); floatTasaDeMutacion = (float) atof(chrTemp);
+	getstr(chrTemp); strTemp=chrTemp;
+   	floatTasaDeMutacion = fromstring<float> (strTemp);
+
 #else
 	uintPoblacion = 10
 	move(4, 1+24);
