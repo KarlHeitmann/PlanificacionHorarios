@@ -6,7 +6,7 @@ class CAdminWindow: public CUserWindow {
 	public:
 		CAdminWindow(int, int);//{CUserWindow::max_row=r; CUserWindow::max_col=c;}
 		~CAdminWindow();
-		virtual void Start(void);
+		virtual void PedirParametros(void);
 	private:
 		
 		AlgoritmoEvolutivo *pAE;

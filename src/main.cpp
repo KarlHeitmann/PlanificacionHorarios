@@ -62,7 +62,7 @@ int main(int argc, char **argv)
 	srand(time(NULL));
 	pUW=win.MainMenu();
 	//pAE=new AlgoritmoEvolutivo(10, 9, 0.5, 0.01);
-
+	pUW->PedirParametros();
 	win.Finish();
 #endif
 }

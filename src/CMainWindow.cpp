@@ -40,7 +40,7 @@ CUserWindow * CMainWindow :: MainMenu () {
 	if ((PasswordTmp == PASS) && (Account == ROOT)) {
 		mvprintw(HALF_ROW, HALF_COL-7, "Bienvenido Jefe!");
 		pUW = new CAdminWindow(max_row, max_col);
-		pUW->Start();
+		//pUW->Start();
 	} else {
 		mvprintw(HALF_ROW, HALF_COL-15, "Login de profes en construccion...");
 	}
