@@ -17,11 +17,12 @@ static int callback(void *NotUsed, int argc, char **argv, char **azColName){
       
 int main(int argc, char **argv)
 {	
+	CUserWindow * pUW;
 #if TEST_SQLITE3 > 0
 	sqlite3 *db;
 	char *zErrMsg = 0;
 	int rc;
-     printf(argv[2]); 
+    printf(argv[2]); 
 	if( argc!=3 ){
 		//printf(stderr, "Usage: %s DATABASE SQL-STATEMENT\n", argv[0]);
 		printf("Usage: %s DATABASE SQL-STATEMENT\n", argv[0]);
@@ -52,7 +53,9 @@ int main(int argc, char **argv)
 #endif
 #if 1
 	CMainWindow win;
-	win.MainMenu();
+	pUW=win.MainMenu();
+	
+	win.Finish();
 #endif
 }
  

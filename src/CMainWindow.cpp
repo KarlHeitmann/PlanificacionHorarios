@@ -10,13 +10,15 @@
 #define HALF_COL max_col / 2
 
 CMainWindow :: CMainWindow () {
-	char AccountTmp[10];
-	char Tmp[20];
-	CUserWindow *pUW;
 	initscr();
 	getmaxyx(stdscr,max_row,max_col);
 
 
+}
+CUserWindow * CMainWindow :: MainMenu () {
+	char AccountTmp[10];
+	char Tmp[20];
+	CUserWindow *pUW;
 	std::string PasswordTmp;
 	mvprintw(HALF_ROW, HALF_COL-8, "Algoritmo Evolutivo.");
 	mvprintw(HALF_ROW+1, HALF_COL-11, "Planificación de Horarios.");
@@ -39,16 +41,14 @@ CMainWindow :: CMainWindow () {
 		mvprintw(HALF_ROW, HALF_COL-7, "Bienvenido Jefe!");
 		pUW = new CAdminWindow(max_row, max_col);
 		pUW->Start();
-		delete pUW;
 	} else {
 		mvprintw(HALF_ROW, HALF_COL-15, "Login de profes en construccion...");
 	}
 
 	refresh();
 	getch();
-	endwin();
-
+	return pUW;
 }
-void CMainWindow :: MainMenu () {
-	
+void CMainWindow::Finish() {
+	endwin();
 }
