@@ -1,8 +1,14 @@
 //#include <ncurses.h>
 #include <sqlite3.h>
+#include <time.h>
+#include <stdlib.h>
+//#include <stdio.h>
 
 #include <stdio.h>
-     
+#include "CMainWindow.h"
+#include "ae/AlgoritmoEvolutivo.h"
+#define TEST_SQLITE3 0
+#if TEST_SQLITE3 > 0
 static int callback(void *NotUsed, int argc, char **argv, char **azColName){
 	int i;
 	for(i=0; i<argc; i++){
@@ -11,15 +17,19 @@ static int callback(void *NotUsed, int argc, char **argv, char **azColName){
 	printf("\n");
 	return 0;
 }
+#endif
       
-#include "interfaz/CMainWindow.h"
 int main(int argc, char **argv)
 {	
-#if 0
+	CUserWindow * pUW;
+	AlgoritmoEvolutivo pAE(10, 9, 0.5, 0.01);
+	DataPackage DP;
+	CMainWindow win;
+#if TEST_SQLITE3 > 0
 	sqlite3 *db;
 	char *zErrMsg = 0;
 	int rc;
-     printf(argv[2]); 
+    printf(argv[2]); 
 	if( argc!=3 ){
 		//printf(stderr, "Usage: %s DATABASE SQL-STATEMENT\n", argv[0]);
 		printf("Usage: %s DATABASE SQL-STATEMENT\n", argv[0]);
@@ -49,8 +59,11 @@ int main(int argc, char **argv)
 	return 0;
 #endif
 #if 1
-	CMainWindow win;
-	win.Welcome();
+	srand(time(NULL));
+	pUW=win.MainMenu();
+	//pAE=new AlgoritmoEvolutivo(10, 9, 0.5, 0.01);
+	pUW->PedirParametros();
+	win.Finish();
 #endif
 }
  
