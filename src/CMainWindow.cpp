@@ -19,7 +19,7 @@
 //   MACROS DEBUG   //
 //                  //
 
-#define SKIP_AUT 1  //Si esta seteado, se salta autenticacion y se loguea como root
+#define SKIP_AUT 0  //Si esta seteado, se salta autenticacion y se loguea como root
 
 CMainWindow :: CMainWindow () {
 	initscr();
@@ -55,7 +55,8 @@ CUserWindow * CMainWindow :: MainMenu () {
 	clear();
 	if ((PasswordTmp == PASS) && (Account == ROOT)) {
 		mvprintw(HALF_ROW, HALF_COL-7, "Bienvenido Jefe!");
-		pUW = new CAdminWindow(max_row, max_col);
+		curs_set(0);
+		pUW = new CAdminWindow(this, max_row, max_col);
 		//pUW->Start();
 	} else {
 		mvprintw(HALF_ROW, HALF_COL-15, "Login de profes en construccion...");
